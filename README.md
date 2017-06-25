@@ -17,4 +17,4 @@ The Islamic Prayer Times Pro module offer the ability to custom manually prayer 
 * Custom spelling of the prayer name labels
 * Translations & Languages: Arabic, English and French.
 
-Please checkout out website for more info [joomlar.net](http://joomlar.net)
+Please checkout our website for more info [joomlar.net](http://joomlar.net)
