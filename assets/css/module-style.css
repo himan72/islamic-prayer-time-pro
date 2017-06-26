@@ -1,0 +1,84 @@
+/**------------------------------------------------------------------------
+# Islamic Prayer module by MH Oudrhiri, joomlar.net
+# ------------------------------------------------------------------------
+# author    M Hicham Oudrhiri http://www.joomlar.net/
+# Copyright @2014 Joomlar.net.  All Rights Reserved.
+# @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+# Websites: http://www.joomlar.net/
+-------------------------------------------------------------------------*/
+
+/*--------------------------->Default layout style start<------------------------*/
+.modiptultimer  {
+  list-style: none;
+
+}
+.nopad {
+  margin: 0;
+}
+.errornoip {
+  color: red;
+  font-weight: bold;
+}
+.authorlink {
+  font-size: 9px;
+  float: right;
+}
+.calcmethod{
+  font-size: 10px;
+  font-weight: bold;
+  margin-top: 5px}
+      /*--------------------------->Daily Table layout style start<------------------------*/
+.tablegreen{
+  margin: 20px 0 20px 0;
+  width: 100%;
+  
+}
+
+.tablegreen table{
+  width:100% !important;
+  height:100%!important;
+  margin:0;padding:0!important;
+}
+.tablegreen tr {
+  border: none;
+}
+.tablegreen tr:last-child td:last-child {
+-moz-border-radius-bottomright:0;
+-webkit-border-bottom-right-radius:0;
+border-bottom-right-radius:0;
+}
+.tablegreen table tr:first-child td:first-child {
+-moz-border-radius-topleft:0;
+-webkit-border-top-left-radius:0;
+border-top-left-radius:0;
+}
+.tablegreen table tr:first-child td:last-child {
+-moz-border-radius-topright:0;
+-webkit-border-top-right-radius:0;
+border-top-right-radius:0;
+}.tablegreen tr:last-child td:first-child{
+-moz-border-radius-bottomleft:0;
+-webkit-border-bottom-left-radius:0;
+border-bottom-left-radius:0;
+}
+
+/*.tablegreen tr:nth-child(odd){ background-color:#388562; color: #ffffff; }
+.tablegreen tr:nth-child(even)    { background-color:#ffffff; }*/
+.tablegreen td{
+vertical-align:middle;
+text-align:left;
+padding:7px;  
+border: none;
+border-bottom: solid 1px #000000;
+
+}
+.modiptcity{
+    font-weight: bold;
+    line-height: 15px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+}
+.listmethod {
+  width: 300px !important;
+}

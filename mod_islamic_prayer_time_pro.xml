@@ -1,0 +1,1141 @@
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>Islamic Prayer Time Pro</name>
+	<author>Joomlar.net</author>
+	<creationDate>Janv 2017</creationDate>
+	<copyright>Copyright @ 2017 Joomlar.net. All rights reserved.</copyright>
+	<license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<authorEmail>support@joomlar.net</authorEmail>
+	<authorUrl>http://www.joomlar.net</authorUrl>
+	<help url="HELP_EXTENSIONS_MODULE_ISLAMIC_PRAYER_TIME_URL"/>
+	<version>1.3.0</version>
+	<description>MOD_ISLAMIC_PRAYER_TIME_DESC</description>
+	<languages>
+		<language tag="en-GB">language/en-GB.mod_islamic_prayer_time_pro.ini</language>
+	</languages>
+	<files>
+		<filename module="mod_islamic_prayer_time_pro">mod_islamic_prayer_time_pro.php</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<folder>assets</folder>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+
+	</files>
+		<config>
+		<fields name="params">
+			<fieldset name="advanced">
+						<field
+						name="layout"
+						type="modulelayout"
+						label="JFIELD_ALT_LAYOUT_LABEL"
+						description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+						<field
+						name="moduleclass_sfx"
+						type="text"
+						label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+						description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				</fieldset>
+			<fieldset name="Prayer_location" label="MODULE_PRAYER_LOCATION">
+			<field name="country" type="text" default="Saudia Arabia" label="MOD_ISLAMIC_PRAYER_TIME_COUNTRY"
+						 description="MOD_ISLAMIC_PRAYER_TIME_COUNTRY_DSC"  size="30" />
+			<field name="city" type="text" default="Makkah" label="MOD_ISLAMIC_PRAYER_TIME_CITY"
+						 description="MOD_ISLAMIC_PRAYER_TIME_CITY_DSC"  size="30" />
+			<field name="timezone" type="text" default="3" label="MOD_ISLAMIC_PRAYER_TIME_TIME_ZONE"
+						 description="MOD_ISLAMIC_PRAYER_TIME_TIME_ZONE"  size="10" />
+				<field name="longitude" type="text" default="39.8261" label="MOD_ISLAMIC_PRAYER_TIME_LONGITUDE"
+							 description="MOD_ISLAMIC_PRAYER_TIME_LONGITUDE_DSC" class= "required validate-numeric" size="20" />
+				<field name="latitude" type="text" default="21.4267" label="MOD_ISLAMIC_PRAYER_TIME_LATITUDE"
+							 description="MOD_ISLAMIC_PRAYER_TIME_LATITUDE_DSC" class= " required validate-numeric" size="20" />
+			</fieldset>
+
+
+			<fieldset name="Prayer" label="MODULE_PRAYER_FEATURES">
+
+				<field name="calculmethod" type="list" default="4" label="MOD_ISLAMIC_PRAYER_TIME_SELECT_METHOD"
+							 description="MOD_ISLAMIC_PRAYER_TIME_SELECT_METHOD_DSC" class="listmethod">
+						<option value="4">MOD_ISLAMIC_PRAYER_TIME_UMM_QURAH_MAKKAH</option>
+						<option value="3">MOD_ISLAMIC_PRAYER_TIME_MUSLIM_WORLD</option>
+						<option value="1">MOD_ISLAMIC_PRAYER_TIME_KARACHI</option>
+						<option value="2">MOD_ISLAMIC_PRAYER_TIME_KARACHI_ISNA</option>
+						<option value="5">MOD_ISLAMIC_PRAYER_TIME_KARACHI_EGYPTION_SYRVEY</option>
+						<option value="7">MOD_ISLAMIC_PRAYER_TIME_THERAN_ISTITUT</option>
+						<option value="0">MOD_ISLAMIC_PRAYER_TIME_THERAN_ITHNA</option>
+						<option value="8">MOD_ISLAMIC_PRAYER_TIME_UOIF</option>
+				</field>
+				<field name="asr_juristic_method" type="radio"
+					default="0"
+					description="MOD_ISLAMIC_PRAYER_TIME_SELECT_ASR_JURISTIC_DESC"
+					label="MOD_ISLAMIC_PRAYER_TIME_SELECT_ASR_JURISTIC"
+				>
+					<option value="0">MOD_ISLAMIC_PRAYER_TIME_SELECT_ASR_SHAFII</option>
+					<option value="1">MOD_ISLAMIC_PRAYER_TIME_SELECT_ASR_HANAFI</option>
+				</field>
+				<field name="fajrangle" type="text" default="" label="MOD_ISLAMIC_PRAYER_TIME_FAJR_ANGLE"
+							 description="MOD_ISLAMIC_PRAYER_TIME_FAJR_ANGLE_DSC" class= "validate-numeric" size="20" />
+
+				<field name="adjmethod" type="list" default="0" label="MOD_ISLAMIC_PRAYER_TIME_ADJUSMENT_HIGHLIGHT"
+							 description="MOD_ISLAMIC_PRAYER_TIME_ADJUSMENT_HIGHLIGHT_DSC">
+						<option value="O">MOD_ISLAMIC_PRAYER_TIME_ADJUSMENT_HIGHLIGHT_NO_ADJUST</option>
+						<option value="1">MOD_ISLAMIC_PRAYER_TIME_ADJUSMENT_HIGHLIGHT_MIDLE_NIGHT</option>
+						<option value="2">MOD_ISLAMIC_PRAYER_TIME_ADJUSMENT_HIGHLIGHT_1.7_NIGHT</option>
+						<option value="3">MOD_ISLAMIC_PRAYER_TIME_ADJUSMENT_HIGHLIGHT_ANGLE</option>
+
+				</field>
+
+
+				<field name="prayer_time_format" type="radio"
+					default="0"
+					description="MOD_ISLAMIC_PRAYER_TIME_PRAYER_TIME_FORMAT"
+					label="MOD_ISLAMIC_PRAYER_TIME_PRAYER_TIME_FORMAT"
+				>
+					<option value="0">MOD_ISLAMIC_PRAYER_TIME_PRAYER_TIME_FORMAT_24</option>
+					<option value="1">MOD_ISLAMIC_PRAYER_TIME_PRAYER_TIME_FORMAT_12</option>
+					<option value="2">MOD_ISLAMIC_PRAYER_TIME_PRAYER_TIME_FORMAT_12_NSX</option>
+				</field>
+
+
+		</fieldset>
+			<fieldset name="hijridate" label= "MOD_ISLAMIC_PRAYER_TIME_HIJRI_PARAMS">
+				<field name="hijrilang" type="list" default="ar" label="MOD_ISLAMIC_PRAYER_TIME_LANG_LBL" description ="MOD_ISLAMIC_PRAYER_TIME_LANG_DSC">
+					<option value="ar">MOD_ISLAMIC_PRAYER_TIME_AR</option>
+					<option value="lt">MOD_ISLAMIC_PRAYER_TIME_LT</option>
+					<option value="arlt">MOD_ISLAMIC_PRAYER_TIME_ARLT</option>
+				</field>
+				<field name="offset" type="list" default="0" label="MOD_ISLAMIC_PRAYER_TIME_OFFSET_LBL" description="MOD_ISLAMIC_PRAYER_TIME_OFFSET_DSC">
+					<option value="2">2</option>
+					<option value="1">1</option>
+					<option value="0">0</option>
+					<option value="-1">-1</option>
+					<option value="-2">-2</option>
+				</field>
+				<field name="hfsize" type="text" label="MOD_ISLAMIC_PRAYER_TIME_FONTSIZE_LBL" class="validate-numeric" default="12" description="MOD_ISLAMIC_PRAYER_TIME_FONTSIZE_DSC" >
+				</field>
+				<field name="m1" type="text" label="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_MOHARRAM" size="" description="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_DSC" default="Muharram"></field>
+				<field name="m2" type="text" label="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_SAFAR" size="" description="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_DSC" default="Safar"></field>
+				<field name="m3" type="text" label="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_RABI1" size="" description="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_DSC" default="Rabbi al-Awwal"></field>
+				<field name="m4" type="text" label="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_RABI2" size="" description="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_DSC" default="Rabbi al-Thanni"></field>
+				<field name="m5" type="text" label="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_JUMADA1" size="" description="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_DSC" default="Jumada al-Ula"></field>
+				<field name="m6" type="text" label="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_JUMADA2" size="" description="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_DSC" default="Jumada al-Thanni"></field>
+				<field name="m7" type="text" label="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_RAJAB" size="" description="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_DSC" default="Rajab"></field>
+				<field name="m8" type="text" label="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_CHABANE" size="" description="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_DSC" default="Shaaban"></field>
+				<field name="m9" type="text" label="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_RAMADAN" size="" description="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_DSC" default="Ramadan"></field>
+				<field name="m10" type="text" label="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_SHAWAL" size="" description="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_DSC" default="Shawwal"></field>
+				<field name="m11" type="text" label="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_DQIDA" size="" description="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_DSC" default="Dhul-Qadah"></field>
+				<field name="m12" type="text" label="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_DHIJJA" size="" description="MOD_ISLAMIC_PRAYER_TIME_CUSTOM_MONTH_DSC" default="Dhul-Hijjah"></field>
+	
+		</fieldset>
+
+		<fieldset name="prayeradjusment" label="MOD_ISLAMIC_PRAYER_TIME_PRAYER_TIME_PRAYER_MINUTES_ADJUST">
+			<field name="fajraddminute" type="list" default="0" label="MOD_ISLAMIC_PRAYER_TIME_PRAYER_FAJR_ADJUST"
+						 description="MOD_ISLAMIC_PRAYER_TIME_PRAYER_FAJR_ADJUST_DSC">
+										<option value="-60">MOD_ISLAMIC_PRAYER_TIME_-60MINUTES</option>
+										<option value="-59">MOD_ISLAMIC_PRAYER_TIME_-59MINUTES</option>
+										<option value="-58">MOD_ISLAMIC_PRAYER_TIME_-58MINUTES</option>
+										<option value="-57">MOD_ISLAMIC_PRAYER_TIME_-57MINUTES</option>
+										<option value="-56">MOD_ISLAMIC_PRAYER_TIME_-56MINUTES</option>
+										<option value="-55">MOD_ISLAMIC_PRAYER_TIME_-55MINUTES</option>
+										<option value="-54">MOD_ISLAMIC_PRAYER_TIME_-54MINUTES</option>
+										<option value="-53">MOD_ISLAMIC_PRAYER_TIME_-53MINUTES</option>
+										<option value="-52">MOD_ISLAMIC_PRAYER_TIME_-52MINUTES</option>
+										<option value="-51">MOD_ISLAMIC_PRAYER_TIME_-51MINUTES</option>
+										<option value="-50">MOD_ISLAMIC_PRAYER_TIME_-50MINUTES</option>
+										<option value="-49">MOD_ISLAMIC_PRAYER_TIME_-49MINUTES</option>
+										<option value="-48">MOD_ISLAMIC_PRAYER_TIME_-48MINUTES</option>
+										<option value="-47">MOD_ISLAMIC_PRAYER_TIME_-47MINUTES</option>
+										<option value="-46">MOD_ISLAMIC_PRAYER_TIME_-46MINUTES</option>
+										<option value="-45">MOD_ISLAMIC_PRAYER_TIME_-45MINUTES</option>
+										<option value="-44">MOD_ISLAMIC_PRAYER_TIME_-44MINUTES</option>
+										<option value="-43">MOD_ISLAMIC_PRAYER_TIME_-43MINUTES</option>
+										<option value="-42">MOD_ISLAMIC_PRAYER_TIME_-42MINUTES</option>
+										<option value="-41">MOD_ISLAMIC_PRAYER_TIME_-41MINUTES</option>
+										<option value="-40">MOD_ISLAMIC_PRAYER_TIME_-40MINUTES</option>
+										<option value="-39">MOD_ISLAMIC_PRAYER_TIME_-39MINUTES</option>
+										<option value="-38">MOD_ISLAMIC_PRAYER_TIME_-38MINUTES</option>
+										<option value="-37">MOD_ISLAMIC_PRAYER_TIME_-37MINUTES</option>
+										<option value="-36">MOD_ISLAMIC_PRAYER_TIME_-36MINUTES</option>
+										<option value="-35">MOD_ISLAMIC_PRAYER_TIME_-35MINUTES</option>
+										<option value="-34">MOD_ISLAMIC_PRAYER_TIME_-34MINUTES</option>
+										<option value="-33">MOD_ISLAMIC_PRAYER_TIME_-33MINUTES</option>
+										<option value="-32">MOD_ISLAMIC_PRAYER_TIME_-32MINUTES</option>
+										<option value="-31">MOD_ISLAMIC_PRAYER_TIME_-31MINUTES</option>
+										<option value="-30">MOD_ISLAMIC_PRAYER_TIME_-30MINUTES</option>
+										<option value="-29">MOD_ISLAMIC_PRAYER_TIME_-29MINUTES</option>
+										<option value="-28">MOD_ISLAMIC_PRAYER_TIME_-28MINUTES</option>
+										<option value="-27">MOD_ISLAMIC_PRAYER_TIME_-27MINUTES</option>
+										<option value="-26">MOD_ISLAMIC_PRAYER_TIME_-26MINUTES</option>
+										<option value="-25">MOD_ISLAMIC_PRAYER_TIME_-25MINUTES</option>
+										<option value="-24">MOD_ISLAMIC_PRAYER_TIME_-24MINUTES</option>
+										<option value="-23">MOD_ISLAMIC_PRAYER_TIME_-23MINUTES</option>
+										<option value="-22">MOD_ISLAMIC_PRAYER_TIME_-22MINUTES</option>
+										<option value="-21">MOD_ISLAMIC_PRAYER_TIME_-21MINUTES</option>
+										<option value="-20">MOD_ISLAMIC_PRAYER_TIME_-20MINUTES</option>
+										<option value="-19">MOD_ISLAMIC_PRAYER_TIME_-19MINUTES</option>
+										<option value="-18">MOD_ISLAMIC_PRAYER_TIME_-18MINUTES</option>
+										<option value="-17">MOD_ISLAMIC_PRAYER_TIME_-17MINUTES</option>
+										<option value="-16">MOD_ISLAMIC_PRAYER_TIME_-16MINUTES</option>
+										<option value="-15">MOD_ISLAMIC_PRAYER_TIME_-15MINUTES</option>
+										<option value="-14">MOD_ISLAMIC_PRAYER_TIME_-14MINUTES</option>
+										<option value="-13">MOD_ISLAMIC_PRAYER_TIME_-13MINUTES</option>
+										<option value="-12">MOD_ISLAMIC_PRAYER_TIME_-12MINUTES</option>
+										<option value="-11">MOD_ISLAMIC_PRAYER_TIME_-11MINUTES</option>
+										<option value="-10">MOD_ISLAMIC_PRAYER_TIME_-10MINUTES</option>
+										<option value="-9">MOD_ISLAMIC_PRAYER_TIME_-9MINUTES</option>
+										<option value="-8">MOD_ISLAMIC_PRAYER_TIME_-8MINUTES</option>
+										<option value="-7">MOD_ISLAMIC_PRAYER_TIME_-7MINUTES</option>
+										<option value="-6">MOD_ISLAMIC_PRAYER_TIME_-6MINUTES</option>
+										<option value="-5">MOD_ISLAMIC_PRAYER_TIME_-5MINUTES</option>
+										<option value="-4">MOD_ISLAMIC_PRAYER_TIME_-4MINUTES</option>
+										<option value="-3">MOD_ISLAMIC_PRAYER_TIME_-3MINUTES</option>
+										<option value="-2">MOD_ISLAMIC_PRAYER_TIME_-2MINUTES</option>
+										<option value="-1">MOD_ISLAMIC_PRAYER_TIME_-1MINUTES</option>
+										<option value="0">MOD_ISLAMIC_PRAYER_TIME_0MINUTES</option>
+										<option value="1">MOD_ISLAMIC_PRAYER_TIME_+1MINUTES</option>
+										<option value="2">MOD_ISLAMIC_PRAYER_TIME_+2MINUTES</option>
+										<option value="3">MOD_ISLAMIC_PRAYER_TIME_+3MINUTES</option>
+										<option value="4">MOD_ISLAMIC_PRAYER_TIME_+4MINUTES</option>
+										<option value="5">MOD_ISLAMIC_PRAYER_TIME_+5MINUTES</option>
+										<option value="6">MOD_ISLAMIC_PRAYER_TIME_+6MINUTES</option>
+										<option value="7">MOD_ISLAMIC_PRAYER_TIME_+7MINUTES</option>
+										<option value="8">MOD_ISLAMIC_PRAYER_TIME_+8MINUTES</option>
+										<option value="9">MOD_ISLAMIC_PRAYER_TIME_+9MINUTES</option>
+										<option value="10">MOD_ISLAMIC_PRAYER_TIME_+10MINUTES</option>
+										<option value="11">MOD_ISLAMIC_PRAYER_TIME_+11MINUTES</option>
+										<option value="12">MOD_ISLAMIC_PRAYER_TIME_+12MINUTES</option>
+										<option value="13">MOD_ISLAMIC_PRAYER_TIME_+13MINUTES</option>
+										<option value="14">MOD_ISLAMIC_PRAYER_TIME_+14MINUTES</option>
+										<option value="15">MOD_ISLAMIC_PRAYER_TIME_+15MINUTES</option>
+										<option value="16">MOD_ISLAMIC_PRAYER_TIME_+16MINUTES</option>
+										<option value="17">MOD_ISLAMIC_PRAYER_TIME_+17MINUTES</option>
+										<option value="18">MOD_ISLAMIC_PRAYER_TIME_+18MINUTES</option>
+										<option value="19">MOD_ISLAMIC_PRAYER_TIME_+19MINUTES</option>
+										<option value="20">MOD_ISLAMIC_PRAYER_TIME_+20MINUTES</option>
+										<option value="21">MOD_ISLAMIC_PRAYER_TIME_+21MINUTES</option>
+										<option value="22">MOD_ISLAMIC_PRAYER_TIME_+22MINUTES</option>
+										<option value="23">MOD_ISLAMIC_PRAYER_TIME_+23MINUTES</option>
+										<option value="24">MOD_ISLAMIC_PRAYER_TIME_+24MINUTES</option>
+										<option value="25">MOD_ISLAMIC_PRAYER_TIME_+25MINUTES</option>
+										<option value="26">MOD_ISLAMIC_PRAYER_TIME_+26MINUTES</option>
+										<option value="27">MOD_ISLAMIC_PRAYER_TIME_+27MINUTES</option>
+										<option value="28">MOD_ISLAMIC_PRAYER_TIME_+28MINUTES</option>
+										<option value="29">MOD_ISLAMIC_PRAYER_TIME_+29MINUTES</option>
+										<option value="30">MOD_ISLAMIC_PRAYER_TIME_+30MINUTES</option>
+										<option value="31">MOD_ISLAMIC_PRAYER_TIME_+31MINUTES</option>
+										<option value="32">MOD_ISLAMIC_PRAYER_TIME_+32MINUTES</option>
+										<option value="33">MOD_ISLAMIC_PRAYER_TIME_+33MINUTES</option>
+										<option value="34">MOD_ISLAMIC_PRAYER_TIME_+34MINUTES</option>
+										<option value="35">MOD_ISLAMIC_PRAYER_TIME_+35MINUTES</option>
+										<option value="36">MOD_ISLAMIC_PRAYER_TIME_+36MINUTES</option>
+										<option value="37">MOD_ISLAMIC_PRAYER_TIME_+37MINUTES</option>
+										<option value="38">MOD_ISLAMIC_PRAYER_TIME_+38MINUTES</option>
+										<option value="39">MOD_ISLAMIC_PRAYER_TIME_+39MINUTES</option>
+										<option value="40">MOD_ISLAMIC_PRAYER_TIME_+40MINUTES</option>
+										<option value="41">MOD_ISLAMIC_PRAYER_TIME_+41MINUTES</option>
+										<option value="42">MOD_ISLAMIC_PRAYER_TIME_+42MINUTES</option>
+										<option value="43">MOD_ISLAMIC_PRAYER_TIME_+43MINUTES</option>
+										<option value="44">MOD_ISLAMIC_PRAYER_TIME_+44MINUTES</option>
+										<option value="45">MOD_ISLAMIC_PRAYER_TIME_+45MINUTES</option>
+										<option value="46">MOD_ISLAMIC_PRAYER_TIME_+46MINUTES</option>
+										<option value="47">MOD_ISLAMIC_PRAYER_TIME_+47MINUTES</option>
+										<option value="48">MOD_ISLAMIC_PRAYER_TIME_+48MINUTES</option>
+										<option value="49">MOD_ISLAMIC_PRAYER_TIME_+49MINUTES</option>
+										<option value="50">MOD_ISLAMIC_PRAYER_TIME_+50MINUTES</option>
+										<option value="51">MOD_ISLAMIC_PRAYER_TIME_+51MINUTES</option>
+										<option value="52">MOD_ISLAMIC_PRAYER_TIME_+52MINUTES</option>
+										<option value="53">MOD_ISLAMIC_PRAYER_TIME_+53MINUTES</option>
+										<option value="54">MOD_ISLAMIC_PRAYER_TIME_+54MINUTES</option>
+										<option value="55">MOD_ISLAMIC_PRAYER_TIME_+55MINUTES</option>
+										<option value="56">MOD_ISLAMIC_PRAYER_TIME_+56MINUTES</option>
+										<option value="57">MOD_ISLAMIC_PRAYER_TIME_+57MINUTES</option>
+										<option value="58">MOD_ISLAMIC_PRAYER_TIME_+58MINUTES</option>
+										<option value="59">MOD_ISLAMIC_PRAYER_TIME_+59MINUTES</option>
+										<option value="60">MOD_ISLAMIC_PRAYER_TIME_+60MINUTES</option>
+			</field>
+			<field name="duhraddminute" type="list" default="0" label="MOD_ISLAMIC_PRAYER_TIME_PRAYER_DHUR_ADJUST"
+						 description="MOD_ISLAMIC_PRAYER_TIME_PRAYER_DHUR_ADJUST_DSC">
+							<option value="-60">MOD_ISLAMIC_PRAYER_TIME_-60MINUTES</option>
+										<option value="-59">MOD_ISLAMIC_PRAYER_TIME_-59MINUTES</option>
+										<option value="-58">MOD_ISLAMIC_PRAYER_TIME_-58MINUTES</option>
+										<option value="-57">MOD_ISLAMIC_PRAYER_TIME_-57MINUTES</option>
+										<option value="-56">MOD_ISLAMIC_PRAYER_TIME_-56MINUTES</option>
+										<option value="-55">MOD_ISLAMIC_PRAYER_TIME_-55MINUTES</option>
+										<option value="-54">MOD_ISLAMIC_PRAYER_TIME_-54MINUTES</option>
+										<option value="-53">MOD_ISLAMIC_PRAYER_TIME_-53MINUTES</option>
+										<option value="-52">MOD_ISLAMIC_PRAYER_TIME_-52MINUTES</option>
+										<option value="-51">MOD_ISLAMIC_PRAYER_TIME_-51MINUTES</option>
+										<option value="-50">MOD_ISLAMIC_PRAYER_TIME_-50MINUTES</option>
+										<option value="-49">MOD_ISLAMIC_PRAYER_TIME_-49MINUTES</option>
+										<option value="-48">MOD_ISLAMIC_PRAYER_TIME_-48MINUTES</option>
+										<option value="-47">MOD_ISLAMIC_PRAYER_TIME_-47MINUTES</option>
+										<option value="-46">MOD_ISLAMIC_PRAYER_TIME_-46MINUTES</option>
+										<option value="-45">MOD_ISLAMIC_PRAYER_TIME_-45MINUTES</option>
+										<option value="-44">MOD_ISLAMIC_PRAYER_TIME_-44MINUTES</option>
+										<option value="-43">MOD_ISLAMIC_PRAYER_TIME_-43MINUTES</option>
+										<option value="-42">MOD_ISLAMIC_PRAYER_TIME_-42MINUTES</option>
+										<option value="-41">MOD_ISLAMIC_PRAYER_TIME_-41MINUTES</option>
+										<option value="-40">MOD_ISLAMIC_PRAYER_TIME_-40MINUTES</option>
+										<option value="-39">MOD_ISLAMIC_PRAYER_TIME_-39MINUTES</option>
+										<option value="-38">MOD_ISLAMIC_PRAYER_TIME_-38MINUTES</option>
+										<option value="-37">MOD_ISLAMIC_PRAYER_TIME_-37MINUTES</option>
+										<option value="-36">MOD_ISLAMIC_PRAYER_TIME_-36MINUTES</option>
+										<option value="-35">MOD_ISLAMIC_PRAYER_TIME_-35MINUTES</option>
+										<option value="-34">MOD_ISLAMIC_PRAYER_TIME_-34MINUTES</option>
+										<option value="-33">MOD_ISLAMIC_PRAYER_TIME_-33MINUTES</option>
+										<option value="-32">MOD_ISLAMIC_PRAYER_TIME_-32MINUTES</option>
+										<option value="-31">MOD_ISLAMIC_PRAYER_TIME_-31MINUTES</option>
+										<option value="-30">MOD_ISLAMIC_PRAYER_TIME_-30MINUTES</option>
+										<option value="-29">MOD_ISLAMIC_PRAYER_TIME_-29MINUTES</option>
+										<option value="-28">MOD_ISLAMIC_PRAYER_TIME_-28MINUTES</option>
+										<option value="-27">MOD_ISLAMIC_PRAYER_TIME_-27MINUTES</option>
+										<option value="-26">MOD_ISLAMIC_PRAYER_TIME_-26MINUTES</option>
+										<option value="-25">MOD_ISLAMIC_PRAYER_TIME_-25MINUTES</option>
+										<option value="-24">MOD_ISLAMIC_PRAYER_TIME_-24MINUTES</option>
+										<option value="-23">MOD_ISLAMIC_PRAYER_TIME_-23MINUTES</option>
+										<option value="-22">MOD_ISLAMIC_PRAYER_TIME_-22MINUTES</option>
+										<option value="-21">MOD_ISLAMIC_PRAYER_TIME_-21MINUTES</option>
+										<option value="-20">MOD_ISLAMIC_PRAYER_TIME_-20MINUTES</option>
+										<option value="-19">MOD_ISLAMIC_PRAYER_TIME_-19MINUTES</option>
+										<option value="-18">MOD_ISLAMIC_PRAYER_TIME_-18MINUTES</option>
+										<option value="-17">MOD_ISLAMIC_PRAYER_TIME_-17MINUTES</option>
+										<option value="-16">MOD_ISLAMIC_PRAYER_TIME_-16MINUTES</option>
+										<option value="-15">MOD_ISLAMIC_PRAYER_TIME_-15MINUTES</option>
+										<option value="-14">MOD_ISLAMIC_PRAYER_TIME_-14MINUTES</option>
+										<option value="-13">MOD_ISLAMIC_PRAYER_TIME_-13MINUTES</option>
+										<option value="-12">MOD_ISLAMIC_PRAYER_TIME_-12MINUTES</option>
+										<option value="-11">MOD_ISLAMIC_PRAYER_TIME_-11MINUTES</option>
+										<option value="-10">MOD_ISLAMIC_PRAYER_TIME_-10MINUTES</option>
+										<option value="-9">MOD_ISLAMIC_PRAYER_TIME_-9MINUTES</option>
+										<option value="-8">MOD_ISLAMIC_PRAYER_TIME_-8MINUTES</option>
+										<option value="-7">MOD_ISLAMIC_PRAYER_TIME_-7MINUTES</option>
+										<option value="-6">MOD_ISLAMIC_PRAYER_TIME_-6MINUTES</option>
+										<option value="-5">MOD_ISLAMIC_PRAYER_TIME_-5MINUTES</option>
+										<option value="-4">MOD_ISLAMIC_PRAYER_TIME_-4MINUTES</option>
+										<option value="-3">MOD_ISLAMIC_PRAYER_TIME_-3MINUTES</option>
+										<option value="-2">MOD_ISLAMIC_PRAYER_TIME_-2MINUTES</option>
+										<option value="-1">MOD_ISLAMIC_PRAYER_TIME_-1MINUTES</option>
+										<option value="0">MOD_ISLAMIC_PRAYER_TIME_0MINUTES</option>
+										<option value="1">MOD_ISLAMIC_PRAYER_TIME_+1MINUTES</option>
+										<option value="2">MOD_ISLAMIC_PRAYER_TIME_+2MINUTES</option>
+										<option value="3">MOD_ISLAMIC_PRAYER_TIME_+3MINUTES</option>
+										<option value="4">MOD_ISLAMIC_PRAYER_TIME_+4MINUTES</option>
+										<option value="5">MOD_ISLAMIC_PRAYER_TIME_+5MINUTES</option>
+										<option value="6">MOD_ISLAMIC_PRAYER_TIME_+6MINUTES</option>
+										<option value="7">MOD_ISLAMIC_PRAYER_TIME_+7MINUTES</option>
+										<option value="8">MOD_ISLAMIC_PRAYER_TIME_+8MINUTES</option>
+										<option value="9">MOD_ISLAMIC_PRAYER_TIME_+9MINUTES</option>
+										<option value="10">MOD_ISLAMIC_PRAYER_TIME_+10MINUTES</option>
+										<option value="11">MOD_ISLAMIC_PRAYER_TIME_+11MINUTES</option>
+										<option value="12">MOD_ISLAMIC_PRAYER_TIME_+12MINUTES</option>
+										<option value="13">MOD_ISLAMIC_PRAYER_TIME_+13MINUTES</option>
+										<option value="14">MOD_ISLAMIC_PRAYER_TIME_+14MINUTES</option>
+										<option value="15">MOD_ISLAMIC_PRAYER_TIME_+15MINUTES</option>
+										<option value="16">MOD_ISLAMIC_PRAYER_TIME_+16MINUTES</option>
+										<option value="17">MOD_ISLAMIC_PRAYER_TIME_+17MINUTES</option>
+										<option value="18">MOD_ISLAMIC_PRAYER_TIME_+18MINUTES</option>
+										<option value="19">MOD_ISLAMIC_PRAYER_TIME_+19MINUTES</option>
+										<option value="20">MOD_ISLAMIC_PRAYER_TIME_+20MINUTES</option>
+										<option value="21">MOD_ISLAMIC_PRAYER_TIME_+21MINUTES</option>
+										<option value="22">MOD_ISLAMIC_PRAYER_TIME_+22MINUTES</option>
+										<option value="23">MOD_ISLAMIC_PRAYER_TIME_+23MINUTES</option>
+										<option value="24">MOD_ISLAMIC_PRAYER_TIME_+24MINUTES</option>
+										<option value="25">MOD_ISLAMIC_PRAYER_TIME_+25MINUTES</option>
+										<option value="26">MOD_ISLAMIC_PRAYER_TIME_+26MINUTES</option>
+										<option value="27">MOD_ISLAMIC_PRAYER_TIME_+27MINUTES</option>
+										<option value="28">MOD_ISLAMIC_PRAYER_TIME_+28MINUTES</option>
+										<option value="29">MOD_ISLAMIC_PRAYER_TIME_+29MINUTES</option>
+										<option value="30">MOD_ISLAMIC_PRAYER_TIME_+30MINUTES</option>
+										<option value="31">MOD_ISLAMIC_PRAYER_TIME_+31MINUTES</option>
+										<option value="32">MOD_ISLAMIC_PRAYER_TIME_+32MINUTES</option>
+										<option value="33">MOD_ISLAMIC_PRAYER_TIME_+33MINUTES</option>
+										<option value="34">MOD_ISLAMIC_PRAYER_TIME_+34MINUTES</option>
+										<option value="35">MOD_ISLAMIC_PRAYER_TIME_+35MINUTES</option>
+										<option value="36">MOD_ISLAMIC_PRAYER_TIME_+36MINUTES</option>
+										<option value="37">MOD_ISLAMIC_PRAYER_TIME_+37MINUTES</option>
+										<option value="38">MOD_ISLAMIC_PRAYER_TIME_+38MINUTES</option>
+										<option value="39">MOD_ISLAMIC_PRAYER_TIME_+39MINUTES</option>
+										<option value="40">MOD_ISLAMIC_PRAYER_TIME_+40MINUTES</option>
+										<option value="41">MOD_ISLAMIC_PRAYER_TIME_+41MINUTES</option>
+										<option value="42">MOD_ISLAMIC_PRAYER_TIME_+42MINUTES</option>
+										<option value="43">MOD_ISLAMIC_PRAYER_TIME_+43MINUTES</option>
+										<option value="44">MOD_ISLAMIC_PRAYER_TIME_+44MINUTES</option>
+										<option value="45">MOD_ISLAMIC_PRAYER_TIME_+45MINUTES</option>
+										<option value="46">MOD_ISLAMIC_PRAYER_TIME_+46MINUTES</option>
+										<option value="47">MOD_ISLAMIC_PRAYER_TIME_+47MINUTES</option>
+										<option value="48">MOD_ISLAMIC_PRAYER_TIME_+48MINUTES</option>
+										<option value="49">MOD_ISLAMIC_PRAYER_TIME_+49MINUTES</option>
+										<option value="50">MOD_ISLAMIC_PRAYER_TIME_+50MINUTES</option>
+										<option value="51">MOD_ISLAMIC_PRAYER_TIME_+51MINUTES</option>
+										<option value="52">MOD_ISLAMIC_PRAYER_TIME_+52MINUTES</option>
+										<option value="53">MOD_ISLAMIC_PRAYER_TIME_+53MINUTES</option>
+										<option value="54">MOD_ISLAMIC_PRAYER_TIME_+54MINUTES</option>
+										<option value="55">MOD_ISLAMIC_PRAYER_TIME_+55MINUTES</option>
+										<option value="56">MOD_ISLAMIC_PRAYER_TIME_+56MINUTES</option>
+										<option value="57">MOD_ISLAMIC_PRAYER_TIME_+57MINUTES</option>
+										<option value="58">MOD_ISLAMIC_PRAYER_TIME_+58MINUTES</option>
+										<option value="59">MOD_ISLAMIC_PRAYER_TIME_+59MINUTES</option>
+										<option value="60">MOD_ISLAMIC_PRAYER_TIME_+60MINUTES</option>
+			</field>
+			<field name="asraddminute" type="list" default="0" label="MOD_ISLAMIC_PRAYER_TIME_PRAYER_ASR_ADJUST"
+						 description="MOD_ISLAMIC_PRAYER_TIME_PRAYER_ASR_ADJUST_DSC">
+							<option value="-60">MOD_ISLAMIC_PRAYER_TIME_-60MINUTES</option>
+										<option value="-59">MOD_ISLAMIC_PRAYER_TIME_-59MINUTES</option>
+										<option value="-58">MOD_ISLAMIC_PRAYER_TIME_-58MINUTES</option>
+										<option value="-57">MOD_ISLAMIC_PRAYER_TIME_-57MINUTES</option>
+										<option value="-56">MOD_ISLAMIC_PRAYER_TIME_-56MINUTES</option>
+										<option value="-55">MOD_ISLAMIC_PRAYER_TIME_-55MINUTES</option>
+										<option value="-54">MOD_ISLAMIC_PRAYER_TIME_-54MINUTES</option>
+										<option value="-53">MOD_ISLAMIC_PRAYER_TIME_-53MINUTES</option>
+										<option value="-52">MOD_ISLAMIC_PRAYER_TIME_-52MINUTES</option>
+										<option value="-51">MOD_ISLAMIC_PRAYER_TIME_-51MINUTES</option>
+										<option value="-50">MOD_ISLAMIC_PRAYER_TIME_-50MINUTES</option>
+										<option value="-49">MOD_ISLAMIC_PRAYER_TIME_-49MINUTES</option>
+										<option value="-48">MOD_ISLAMIC_PRAYER_TIME_-48MINUTES</option>
+										<option value="-47">MOD_ISLAMIC_PRAYER_TIME_-47MINUTES</option>
+										<option value="-46">MOD_ISLAMIC_PRAYER_TIME_-46MINUTES</option>
+										<option value="-45">MOD_ISLAMIC_PRAYER_TIME_-45MINUTES</option>
+										<option value="-44">MOD_ISLAMIC_PRAYER_TIME_-44MINUTES</option>
+										<option value="-43">MOD_ISLAMIC_PRAYER_TIME_-43MINUTES</option>
+										<option value="-42">MOD_ISLAMIC_PRAYER_TIME_-42MINUTES</option>
+										<option value="-41">MOD_ISLAMIC_PRAYER_TIME_-41MINUTES</option>
+										<option value="-40">MOD_ISLAMIC_PRAYER_TIME_-40MINUTES</option>
+										<option value="-39">MOD_ISLAMIC_PRAYER_TIME_-39MINUTES</option>
+										<option value="-38">MOD_ISLAMIC_PRAYER_TIME_-38MINUTES</option>
+										<option value="-37">MOD_ISLAMIC_PRAYER_TIME_-37MINUTES</option>
+										<option value="-36">MOD_ISLAMIC_PRAYER_TIME_-36MINUTES</option>
+										<option value="-35">MOD_ISLAMIC_PRAYER_TIME_-35MINUTES</option>
+										<option value="-34">MOD_ISLAMIC_PRAYER_TIME_-34MINUTES</option>
+										<option value="-33">MOD_ISLAMIC_PRAYER_TIME_-33MINUTES</option>
+										<option value="-32">MOD_ISLAMIC_PRAYER_TIME_-32MINUTES</option>
+										<option value="-31">MOD_ISLAMIC_PRAYER_TIME_-31MINUTES</option>
+										<option value="-30">MOD_ISLAMIC_PRAYER_TIME_-30MINUTES</option>
+										<option value="-29">MOD_ISLAMIC_PRAYER_TIME_-29MINUTES</option>
+										<option value="-28">MOD_ISLAMIC_PRAYER_TIME_-28MINUTES</option>
+										<option value="-27">MOD_ISLAMIC_PRAYER_TIME_-27MINUTES</option>
+										<option value="-26">MOD_ISLAMIC_PRAYER_TIME_-26MINUTES</option>
+										<option value="-25">MOD_ISLAMIC_PRAYER_TIME_-25MINUTES</option>
+										<option value="-24">MOD_ISLAMIC_PRAYER_TIME_-24MINUTES</option>
+										<option value="-23">MOD_ISLAMIC_PRAYER_TIME_-23MINUTES</option>
+										<option value="-22">MOD_ISLAMIC_PRAYER_TIME_-22MINUTES</option>
+										<option value="-21">MOD_ISLAMIC_PRAYER_TIME_-21MINUTES</option>
+										<option value="-20">MOD_ISLAMIC_PRAYER_TIME_-20MINUTES</option>
+										<option value="-19">MOD_ISLAMIC_PRAYER_TIME_-19MINUTES</option>
+										<option value="-18">MOD_ISLAMIC_PRAYER_TIME_-18MINUTES</option>
+										<option value="-17">MOD_ISLAMIC_PRAYER_TIME_-17MINUTES</option>
+										<option value="-16">MOD_ISLAMIC_PRAYER_TIME_-16MINUTES</option>
+										<option value="-15">MOD_ISLAMIC_PRAYER_TIME_-15MINUTES</option>
+										<option value="-14">MOD_ISLAMIC_PRAYER_TIME_-14MINUTES</option>
+										<option value="-13">MOD_ISLAMIC_PRAYER_TIME_-13MINUTES</option>
+										<option value="-12">MOD_ISLAMIC_PRAYER_TIME_-12MINUTES</option>
+										<option value="-11">MOD_ISLAMIC_PRAYER_TIME_-11MINUTES</option>
+										<option value="-10">MOD_ISLAMIC_PRAYER_TIME_-10MINUTES</option>
+										<option value="-9">MOD_ISLAMIC_PRAYER_TIME_-9MINUTES</option>
+										<option value="-8">MOD_ISLAMIC_PRAYER_TIME_-8MINUTES</option>
+										<option value="-7">MOD_ISLAMIC_PRAYER_TIME_-7MINUTES</option>
+										<option value="-6">MOD_ISLAMIC_PRAYER_TIME_-6MINUTES</option>
+										<option value="-5">MOD_ISLAMIC_PRAYER_TIME_-5MINUTES</option>
+										<option value="-4">MOD_ISLAMIC_PRAYER_TIME_-4MINUTES</option>
+										<option value="-3">MOD_ISLAMIC_PRAYER_TIME_-3MINUTES</option>
+										<option value="-2">MOD_ISLAMIC_PRAYER_TIME_-2MINUTES</option>
+										<option value="-1">MOD_ISLAMIC_PRAYER_TIME_-1MINUTES</option>
+										<option value="0">MOD_ISLAMIC_PRAYER_TIME_0MINUTES</option>
+										<option value="1">MOD_ISLAMIC_PRAYER_TIME_+1MINUTES</option>
+										<option value="2">MOD_ISLAMIC_PRAYER_TIME_+2MINUTES</option>
+										<option value="3">MOD_ISLAMIC_PRAYER_TIME_+3MINUTES</option>
+										<option value="4">MOD_ISLAMIC_PRAYER_TIME_+4MINUTES</option>
+										<option value="5">MOD_ISLAMIC_PRAYER_TIME_+5MINUTES</option>
+										<option value="6">MOD_ISLAMIC_PRAYER_TIME_+6MINUTES</option>
+										<option value="7">MOD_ISLAMIC_PRAYER_TIME_+7MINUTES</option>
+										<option value="8">MOD_ISLAMIC_PRAYER_TIME_+8MINUTES</option>
+										<option value="9">MOD_ISLAMIC_PRAYER_TIME_+9MINUTES</option>
+										<option value="10">MOD_ISLAMIC_PRAYER_TIME_+10MINUTES</option>
+										<option value="11">MOD_ISLAMIC_PRAYER_TIME_+11MINUTES</option>
+										<option value="12">MOD_ISLAMIC_PRAYER_TIME_+12MINUTES</option>
+										<option value="13">MOD_ISLAMIC_PRAYER_TIME_+13MINUTES</option>
+										<option value="14">MOD_ISLAMIC_PRAYER_TIME_+14MINUTES</option>
+										<option value="15">MOD_ISLAMIC_PRAYER_TIME_+15MINUTES</option>
+										<option value="16">MOD_ISLAMIC_PRAYER_TIME_+16MINUTES</option>
+										<option value="17">MOD_ISLAMIC_PRAYER_TIME_+17MINUTES</option>
+										<option value="18">MOD_ISLAMIC_PRAYER_TIME_+18MINUTES</option>
+										<option value="19">MOD_ISLAMIC_PRAYER_TIME_+19MINUTES</option>
+										<option value="20">MOD_ISLAMIC_PRAYER_TIME_+20MINUTES</option>
+										<option value="21">MOD_ISLAMIC_PRAYER_TIME_+21MINUTES</option>
+										<option value="22">MOD_ISLAMIC_PRAYER_TIME_+22MINUTES</option>
+										<option value="23">MOD_ISLAMIC_PRAYER_TIME_+23MINUTES</option>
+										<option value="24">MOD_ISLAMIC_PRAYER_TIME_+24MINUTES</option>
+										<option value="25">MOD_ISLAMIC_PRAYER_TIME_+25MINUTES</option>
+										<option value="26">MOD_ISLAMIC_PRAYER_TIME_+26MINUTES</option>
+										<option value="27">MOD_ISLAMIC_PRAYER_TIME_+27MINUTES</option>
+										<option value="28">MOD_ISLAMIC_PRAYER_TIME_+28MINUTES</option>
+										<option value="29">MOD_ISLAMIC_PRAYER_TIME_+29MINUTES</option>
+										<option value="30">MOD_ISLAMIC_PRAYER_TIME_+30MINUTES</option>
+										<option value="31">MOD_ISLAMIC_PRAYER_TIME_+31MINUTES</option>
+										<option value="32">MOD_ISLAMIC_PRAYER_TIME_+32MINUTES</option>
+										<option value="33">MOD_ISLAMIC_PRAYER_TIME_+33MINUTES</option>
+										<option value="34">MOD_ISLAMIC_PRAYER_TIME_+34MINUTES</option>
+										<option value="35">MOD_ISLAMIC_PRAYER_TIME_+35MINUTES</option>
+										<option value="36">MOD_ISLAMIC_PRAYER_TIME_+36MINUTES</option>
+										<option value="37">MOD_ISLAMIC_PRAYER_TIME_+37MINUTES</option>
+										<option value="38">MOD_ISLAMIC_PRAYER_TIME_+38MINUTES</option>
+										<option value="39">MOD_ISLAMIC_PRAYER_TIME_+39MINUTES</option>
+										<option value="40">MOD_ISLAMIC_PRAYER_TIME_+40MINUTES</option>
+										<option value="41">MOD_ISLAMIC_PRAYER_TIME_+41MINUTES</option>
+										<option value="42">MOD_ISLAMIC_PRAYER_TIME_+42MINUTES</option>
+										<option value="43">MOD_ISLAMIC_PRAYER_TIME_+43MINUTES</option>
+										<option value="44">MOD_ISLAMIC_PRAYER_TIME_+44MINUTES</option>
+										<option value="45">MOD_ISLAMIC_PRAYER_TIME_+45MINUTES</option>
+										<option value="46">MOD_ISLAMIC_PRAYER_TIME_+46MINUTES</option>
+										<option value="47">MOD_ISLAMIC_PRAYER_TIME_+47MINUTES</option>
+										<option value="48">MOD_ISLAMIC_PRAYER_TIME_+48MINUTES</option>
+										<option value="49">MOD_ISLAMIC_PRAYER_TIME_+49MINUTES</option>
+										<option value="50">MOD_ISLAMIC_PRAYER_TIME_+50MINUTES</option>
+										<option value="51">MOD_ISLAMIC_PRAYER_TIME_+51MINUTES</option>
+										<option value="52">MOD_ISLAMIC_PRAYER_TIME_+52MINUTES</option>
+										<option value="53">MOD_ISLAMIC_PRAYER_TIME_+53MINUTES</option>
+										<option value="54">MOD_ISLAMIC_PRAYER_TIME_+54MINUTES</option>
+										<option value="55">MOD_ISLAMIC_PRAYER_TIME_+55MINUTES</option>
+										<option value="56">MOD_ISLAMIC_PRAYER_TIME_+56MINUTES</option>
+										<option value="57">MOD_ISLAMIC_PRAYER_TIME_+57MINUTES</option>
+										<option value="58">MOD_ISLAMIC_PRAYER_TIME_+58MINUTES</option>
+										<option value="59">MOD_ISLAMIC_PRAYER_TIME_+59MINUTES</option>
+										<option value="60">MOD_ISLAMIC_PRAYER_TIME_+60MINUTES</option>
+			</field>
+			<field name="maghribraddminute" type="list" default="0" label="MOD_ISLAMIC_PRAYER_TIME_PRAYER_MAGHRIB_ADJUST"
+						 description="MOD_ISLAMIC_PRAYER_TIME_PRAYER_MAGHRIB_ADJUST_DSC">
+							<option value="-60">MOD_ISLAMIC_PRAYER_TIME_-60MINUTES</option>
+										<option value="-59">MOD_ISLAMIC_PRAYER_TIME_-59MINUTES</option>
+										<option value="-58">MOD_ISLAMIC_PRAYER_TIME_-58MINUTES</option>
+										<option value="-57">MOD_ISLAMIC_PRAYER_TIME_-57MINUTES</option>
+										<option value="-56">MOD_ISLAMIC_PRAYER_TIME_-56MINUTES</option>
+										<option value="-55">MOD_ISLAMIC_PRAYER_TIME_-55MINUTES</option>
+										<option value="-54">MOD_ISLAMIC_PRAYER_TIME_-54MINUTES</option>
+										<option value="-53">MOD_ISLAMIC_PRAYER_TIME_-53MINUTES</option>
+										<option value="-52">MOD_ISLAMIC_PRAYER_TIME_-52MINUTES</option>
+										<option value="-51">MOD_ISLAMIC_PRAYER_TIME_-51MINUTES</option>
+										<option value="-50">MOD_ISLAMIC_PRAYER_TIME_-50MINUTES</option>
+										<option value="-49">MOD_ISLAMIC_PRAYER_TIME_-49MINUTES</option>
+										<option value="-48">MOD_ISLAMIC_PRAYER_TIME_-48MINUTES</option>
+										<option value="-47">MOD_ISLAMIC_PRAYER_TIME_-47MINUTES</option>
+										<option value="-46">MOD_ISLAMIC_PRAYER_TIME_-46MINUTES</option>
+										<option value="-45">MOD_ISLAMIC_PRAYER_TIME_-45MINUTES</option>
+										<option value="-44">MOD_ISLAMIC_PRAYER_TIME_-44MINUTES</option>
+										<option value="-43">MOD_ISLAMIC_PRAYER_TIME_-43MINUTES</option>
+										<option value="-42">MOD_ISLAMIC_PRAYER_TIME_-42MINUTES</option>
+										<option value="-41">MOD_ISLAMIC_PRAYER_TIME_-41MINUTES</option>
+										<option value="-40">MOD_ISLAMIC_PRAYER_TIME_-40MINUTES</option>
+										<option value="-39">MOD_ISLAMIC_PRAYER_TIME_-39MINUTES</option>
+										<option value="-38">MOD_ISLAMIC_PRAYER_TIME_-38MINUTES</option>
+										<option value="-37">MOD_ISLAMIC_PRAYER_TIME_-37MINUTES</option>
+										<option value="-36">MOD_ISLAMIC_PRAYER_TIME_-36MINUTES</option>
+										<option value="-35">MOD_ISLAMIC_PRAYER_TIME_-35MINUTES</option>
+										<option value="-34">MOD_ISLAMIC_PRAYER_TIME_-34MINUTES</option>
+										<option value="-33">MOD_ISLAMIC_PRAYER_TIME_-33MINUTES</option>
+										<option value="-32">MOD_ISLAMIC_PRAYER_TIME_-32MINUTES</option>
+										<option value="-31">MOD_ISLAMIC_PRAYER_TIME_-31MINUTES</option>
+										<option value="-30">MOD_ISLAMIC_PRAYER_TIME_-30MINUTES</option>
+										<option value="-29">MOD_ISLAMIC_PRAYER_TIME_-29MINUTES</option>
+										<option value="-28">MOD_ISLAMIC_PRAYER_TIME_-28MINUTES</option>
+										<option value="-27">MOD_ISLAMIC_PRAYER_TIME_-27MINUTES</option>
+										<option value="-26">MOD_ISLAMIC_PRAYER_TIME_-26MINUTES</option>
+										<option value="-25">MOD_ISLAMIC_PRAYER_TIME_-25MINUTES</option>
+										<option value="-24">MOD_ISLAMIC_PRAYER_TIME_-24MINUTES</option>
+										<option value="-23">MOD_ISLAMIC_PRAYER_TIME_-23MINUTES</option>
+										<option value="-22">MOD_ISLAMIC_PRAYER_TIME_-22MINUTES</option>
+										<option value="-21">MOD_ISLAMIC_PRAYER_TIME_-21MINUTES</option>
+										<option value="-20">MOD_ISLAMIC_PRAYER_TIME_-20MINUTES</option>
+										<option value="-19">MOD_ISLAMIC_PRAYER_TIME_-19MINUTES</option>
+										<option value="-18">MOD_ISLAMIC_PRAYER_TIME_-18MINUTES</option>
+										<option value="-17">MOD_ISLAMIC_PRAYER_TIME_-17MINUTES</option>
+										<option value="-16">MOD_ISLAMIC_PRAYER_TIME_-16MINUTES</option>
+										<option value="-15">MOD_ISLAMIC_PRAYER_TIME_-15MINUTES</option>
+										<option value="-14">MOD_ISLAMIC_PRAYER_TIME_-14MINUTES</option>
+										<option value="-13">MOD_ISLAMIC_PRAYER_TIME_-13MINUTES</option>
+										<option value="-12">MOD_ISLAMIC_PRAYER_TIME_-12MINUTES</option>
+										<option value="-11">MOD_ISLAMIC_PRAYER_TIME_-11MINUTES</option>
+										<option value="-10">MOD_ISLAMIC_PRAYER_TIME_-10MINUTES</option>
+										<option value="-9">MOD_ISLAMIC_PRAYER_TIME_-9MINUTES</option>
+										<option value="-8">MOD_ISLAMIC_PRAYER_TIME_-8MINUTES</option>
+										<option value="-7">MOD_ISLAMIC_PRAYER_TIME_-7MINUTES</option>
+										<option value="-6">MOD_ISLAMIC_PRAYER_TIME_-6MINUTES</option>
+										<option value="-5">MOD_ISLAMIC_PRAYER_TIME_-5MINUTES</option>
+										<option value="-4">MOD_ISLAMIC_PRAYER_TIME_-4MINUTES</option>
+										<option value="-3">MOD_ISLAMIC_PRAYER_TIME_-3MINUTES</option>
+										<option value="-2">MOD_ISLAMIC_PRAYER_TIME_-2MINUTES</option>
+										<option value="-1">MOD_ISLAMIC_PRAYER_TIME_-1MINUTES</option>
+										<option value="0">MOD_ISLAMIC_PRAYER_TIME_0MINUTES</option>
+										<option value="1">MOD_ISLAMIC_PRAYER_TIME_+1MINUTES</option>
+										<option value="2">MOD_ISLAMIC_PRAYER_TIME_+2MINUTES</option>
+										<option value="3">MOD_ISLAMIC_PRAYER_TIME_+3MINUTES</option>
+										<option value="4">MOD_ISLAMIC_PRAYER_TIME_+4MINUTES</option>
+										<option value="5">MOD_ISLAMIC_PRAYER_TIME_+5MINUTES</option>
+										<option value="6">MOD_ISLAMIC_PRAYER_TIME_+6MINUTES</option>
+										<option value="7">MOD_ISLAMIC_PRAYER_TIME_+7MINUTES</option>
+										<option value="8">MOD_ISLAMIC_PRAYER_TIME_+8MINUTES</option>
+										<option value="9">MOD_ISLAMIC_PRAYER_TIME_+9MINUTES</option>
+										<option value="10">MOD_ISLAMIC_PRAYER_TIME_+10MINUTES</option>
+										<option value="11">MOD_ISLAMIC_PRAYER_TIME_+11MINUTES</option>
+										<option value="12">MOD_ISLAMIC_PRAYER_TIME_+12MINUTES</option>
+										<option value="13">MOD_ISLAMIC_PRAYER_TIME_+13MINUTES</option>
+										<option value="14">MOD_ISLAMIC_PRAYER_TIME_+14MINUTES</option>
+										<option value="15">MOD_ISLAMIC_PRAYER_TIME_+15MINUTES</option>
+										<option value="16">MOD_ISLAMIC_PRAYER_TIME_+16MINUTES</option>
+										<option value="17">MOD_ISLAMIC_PRAYER_TIME_+17MINUTES</option>
+										<option value="18">MOD_ISLAMIC_PRAYER_TIME_+18MINUTES</option>
+										<option value="19">MOD_ISLAMIC_PRAYER_TIME_+19MINUTES</option>
+										<option value="20">MOD_ISLAMIC_PRAYER_TIME_+20MINUTES</option>
+										<option value="21">MOD_ISLAMIC_PRAYER_TIME_+21MINUTES</option>
+										<option value="22">MOD_ISLAMIC_PRAYER_TIME_+22MINUTES</option>
+										<option value="23">MOD_ISLAMIC_PRAYER_TIME_+23MINUTES</option>
+										<option value="24">MOD_ISLAMIC_PRAYER_TIME_+24MINUTES</option>
+										<option value="25">MOD_ISLAMIC_PRAYER_TIME_+25MINUTES</option>
+										<option value="26">MOD_ISLAMIC_PRAYER_TIME_+26MINUTES</option>
+										<option value="27">MOD_ISLAMIC_PRAYER_TIME_+27MINUTES</option>
+										<option value="28">MOD_ISLAMIC_PRAYER_TIME_+28MINUTES</option>
+										<option value="29">MOD_ISLAMIC_PRAYER_TIME_+29MINUTES</option>
+										<option value="30">MOD_ISLAMIC_PRAYER_TIME_+30MINUTES</option>
+										<option value="31">MOD_ISLAMIC_PRAYER_TIME_+31MINUTES</option>
+										<option value="32">MOD_ISLAMIC_PRAYER_TIME_+32MINUTES</option>
+										<option value="33">MOD_ISLAMIC_PRAYER_TIME_+33MINUTES</option>
+										<option value="34">MOD_ISLAMIC_PRAYER_TIME_+34MINUTES</option>
+										<option value="35">MOD_ISLAMIC_PRAYER_TIME_+35MINUTES</option>
+										<option value="36">MOD_ISLAMIC_PRAYER_TIME_+36MINUTES</option>
+										<option value="37">MOD_ISLAMIC_PRAYER_TIME_+37MINUTES</option>
+										<option value="38">MOD_ISLAMIC_PRAYER_TIME_+38MINUTES</option>
+										<option value="39">MOD_ISLAMIC_PRAYER_TIME_+39MINUTES</option>
+										<option value="40">MOD_ISLAMIC_PRAYER_TIME_+40MINUTES</option>
+										<option value="41">MOD_ISLAMIC_PRAYER_TIME_+41MINUTES</option>
+										<option value="42">MOD_ISLAMIC_PRAYER_TIME_+42MINUTES</option>
+										<option value="43">MOD_ISLAMIC_PRAYER_TIME_+43MINUTES</option>
+										<option value="44">MOD_ISLAMIC_PRAYER_TIME_+44MINUTES</option>
+										<option value="45">MOD_ISLAMIC_PRAYER_TIME_+45MINUTES</option>
+										<option value="46">MOD_ISLAMIC_PRAYER_TIME_+46MINUTES</option>
+										<option value="47">MOD_ISLAMIC_PRAYER_TIME_+47MINUTES</option>
+										<option value="48">MOD_ISLAMIC_PRAYER_TIME_+48MINUTES</option>
+										<option value="49">MOD_ISLAMIC_PRAYER_TIME_+49MINUTES</option>
+										<option value="50">MOD_ISLAMIC_PRAYER_TIME_+50MINUTES</option>
+										<option value="51">MOD_ISLAMIC_PRAYER_TIME_+51MINUTES</option>
+										<option value="52">MOD_ISLAMIC_PRAYER_TIME_+52MINUTES</option>
+										<option value="53">MOD_ISLAMIC_PRAYER_TIME_+53MINUTES</option>
+										<option value="54">MOD_ISLAMIC_PRAYER_TIME_+54MINUTES</option>
+										<option value="55">MOD_ISLAMIC_PRAYER_TIME_+55MINUTES</option>
+										<option value="56">MOD_ISLAMIC_PRAYER_TIME_+56MINUTES</option>
+										<option value="57">MOD_ISLAMIC_PRAYER_TIME_+57MINUTES</option>
+										<option value="58">MOD_ISLAMIC_PRAYER_TIME_+58MINUTES</option>
+										<option value="59">MOD_ISLAMIC_PRAYER_TIME_+59MINUTES</option>
+										<option value="60">MOD_ISLAMIC_PRAYER_TIME_+60MINUTES</option>
+			</field>
+			<field name="ishaaddminute" type="list" default="0" label="MOD_ISLAMIC_PRAYER_TIME_PRAYER_ISHAA_ADJUST"
+						 description="MOD_ISLAMIC_PRAYER_TIME_PRAYER_ISHAA_ADJUST_DSC">
+										<option value="-60">MOD_ISLAMIC_PRAYER_TIME_-60MINUTES</option>
+										<option value="-59">MOD_ISLAMIC_PRAYER_TIME_-59MINUTES</option>
+										<option value="-58">MOD_ISLAMIC_PRAYER_TIME_-58MINUTES</option>
+										<option value="-57">MOD_ISLAMIC_PRAYER_TIME_-57MINUTES</option>
+										<option value="-56">MOD_ISLAMIC_PRAYER_TIME_-56MINUTES</option>
+										<option value="-55">MOD_ISLAMIC_PRAYER_TIME_-55MINUTES</option>
+										<option value="-54">MOD_ISLAMIC_PRAYER_TIME_-54MINUTES</option>
+										<option value="-53">MOD_ISLAMIC_PRAYER_TIME_-53MINUTES</option>
+										<option value="-52">MOD_ISLAMIC_PRAYER_TIME_-52MINUTES</option>
+										<option value="-51">MOD_ISLAMIC_PRAYER_TIME_-51MINUTES</option>
+										<option value="-50">MOD_ISLAMIC_PRAYER_TIME_-50MINUTES</option>
+										<option value="-49">MOD_ISLAMIC_PRAYER_TIME_-49MINUTES</option>
+										<option value="-48">MOD_ISLAMIC_PRAYER_TIME_-48MINUTES</option>
+										<option value="-47">MOD_ISLAMIC_PRAYER_TIME_-47MINUTES</option>
+										<option value="-46">MOD_ISLAMIC_PRAYER_TIME_-46MINUTES</option>
+										<option value="-45">MOD_ISLAMIC_PRAYER_TIME_-45MINUTES</option>
+										<option value="-44">MOD_ISLAMIC_PRAYER_TIME_-44MINUTES</option>
+										<option value="-43">MOD_ISLAMIC_PRAYER_TIME_-43MINUTES</option>
+										<option value="-42">MOD_ISLAMIC_PRAYER_TIME_-42MINUTES</option>
+										<option value="-41">MOD_ISLAMIC_PRAYER_TIME_-41MINUTES</option>
+										<option value="-40">MOD_ISLAMIC_PRAYER_TIME_-40MINUTES</option>
+										<option value="-39">MOD_ISLAMIC_PRAYER_TIME_-39MINUTES</option>
+										<option value="-38">MOD_ISLAMIC_PRAYER_TIME_-38MINUTES</option>
+										<option value="-37">MOD_ISLAMIC_PRAYER_TIME_-37MINUTES</option>
+										<option value="-36">MOD_ISLAMIC_PRAYER_TIME_-36MINUTES</option>
+										<option value="-35">MOD_ISLAMIC_PRAYER_TIME_-35MINUTES</option>
+										<option value="-34">MOD_ISLAMIC_PRAYER_TIME_-34MINUTES</option>
+										<option value="-33">MOD_ISLAMIC_PRAYER_TIME_-33MINUTES</option>
+										<option value="-32">MOD_ISLAMIC_PRAYER_TIME_-32MINUTES</option>
+										<option value="-31">MOD_ISLAMIC_PRAYER_TIME_-31MINUTES</option>
+										<option value="-30">MOD_ISLAMIC_PRAYER_TIME_-30MINUTES</option>
+										<option value="-29">MOD_ISLAMIC_PRAYER_TIME_-29MINUTES</option>
+										<option value="-28">MOD_ISLAMIC_PRAYER_TIME_-28MINUTES</option>
+										<option value="-27">MOD_ISLAMIC_PRAYER_TIME_-27MINUTES</option>
+										<option value="-26">MOD_ISLAMIC_PRAYER_TIME_-26MINUTES</option>
+										<option value="-25">MOD_ISLAMIC_PRAYER_TIME_-25MINUTES</option>
+										<option value="-24">MOD_ISLAMIC_PRAYER_TIME_-24MINUTES</option>
+										<option value="-23">MOD_ISLAMIC_PRAYER_TIME_-23MINUTES</option>
+										<option value="-22">MOD_ISLAMIC_PRAYER_TIME_-22MINUTES</option>
+										<option value="-21">MOD_ISLAMIC_PRAYER_TIME_-21MINUTES</option>
+										<option value="-20">MOD_ISLAMIC_PRAYER_TIME_-20MINUTES</option>
+										<option value="-19">MOD_ISLAMIC_PRAYER_TIME_-19MINUTES</option>
+										<option value="-18">MOD_ISLAMIC_PRAYER_TIME_-18MINUTES</option>
+										<option value="-17">MOD_ISLAMIC_PRAYER_TIME_-17MINUTES</option>
+										<option value="-16">MOD_ISLAMIC_PRAYER_TIME_-16MINUTES</option>
+										<option value="-15">MOD_ISLAMIC_PRAYER_TIME_-15MINUTES</option>
+										<option value="-14">MOD_ISLAMIC_PRAYER_TIME_-14MINUTES</option>
+										<option value="-13">MOD_ISLAMIC_PRAYER_TIME_-13MINUTES</option>
+										<option value="-12">MOD_ISLAMIC_PRAYER_TIME_-12MINUTES</option>
+										<option value="-11">MOD_ISLAMIC_PRAYER_TIME_-11MINUTES</option>
+										<option value="-10">MOD_ISLAMIC_PRAYER_TIME_-10MINUTES</option>
+										<option value="-9">MOD_ISLAMIC_PRAYER_TIME_-9MINUTES</option>
+										<option value="-8">MOD_ISLAMIC_PRAYER_TIME_-8MINUTES</option>
+										<option value="-7">MOD_ISLAMIC_PRAYER_TIME_-7MINUTES</option>
+										<option value="-6">MOD_ISLAMIC_PRAYER_TIME_-6MINUTES</option>
+										<option value="-5">MOD_ISLAMIC_PRAYER_TIME_-5MINUTES</option>
+										<option value="-4">MOD_ISLAMIC_PRAYER_TIME_-4MINUTES</option>
+										<option value="-3">MOD_ISLAMIC_PRAYER_TIME_-3MINUTES</option>
+										<option value="-2">MOD_ISLAMIC_PRAYER_TIME_-2MINUTES</option>
+										<option value="-1">MOD_ISLAMIC_PRAYER_TIME_-1MINUTES</option>
+										<option value="0">MOD_ISLAMIC_PRAYER_TIME_0MINUTES</option>
+										<option value="1">MOD_ISLAMIC_PRAYER_TIME_+1MINUTES</option>
+										<option value="2">MOD_ISLAMIC_PRAYER_TIME_+2MINUTES</option>
+										<option value="3">MOD_ISLAMIC_PRAYER_TIME_+3MINUTES</option>
+										<option value="4">MOD_ISLAMIC_PRAYER_TIME_+4MINUTES</option>
+										<option value="5">MOD_ISLAMIC_PRAYER_TIME_+5MINUTES</option>
+										<option value="6">MOD_ISLAMIC_PRAYER_TIME_+6MINUTES</option>
+										<option value="7">MOD_ISLAMIC_PRAYER_TIME_+7MINUTES</option>
+										<option value="8">MOD_ISLAMIC_PRAYER_TIME_+8MINUTES</option>
+										<option value="9">MOD_ISLAMIC_PRAYER_TIME_+9MINUTES</option>
+										<option value="10">MOD_ISLAMIC_PRAYER_TIME_+10MINUTES</option>
+										<option value="11">MOD_ISLAMIC_PRAYER_TIME_+11MINUTES</option>
+										<option value="12">MOD_ISLAMIC_PRAYER_TIME_+12MINUTES</option>
+										<option value="13">MOD_ISLAMIC_PRAYER_TIME_+13MINUTES</option>
+										<option value="14">MOD_ISLAMIC_PRAYER_TIME_+14MINUTES</option>
+										<option value="15">MOD_ISLAMIC_PRAYER_TIME_+15MINUTES</option>
+										<option value="16">MOD_ISLAMIC_PRAYER_TIME_+16MINUTES</option>
+										<option value="17">MOD_ISLAMIC_PRAYER_TIME_+17MINUTES</option>
+										<option value="18">MOD_ISLAMIC_PRAYER_TIME_+18MINUTES</option>
+										<option value="19">MOD_ISLAMIC_PRAYER_TIME_+19MINUTES</option>
+										<option value="20">MOD_ISLAMIC_PRAYER_TIME_+20MINUTES</option>
+										<option value="21">MOD_ISLAMIC_PRAYER_TIME_+21MINUTES</option>
+										<option value="22">MOD_ISLAMIC_PRAYER_TIME_+22MINUTES</option>
+										<option value="23">MOD_ISLAMIC_PRAYER_TIME_+23MINUTES</option>
+										<option value="24">MOD_ISLAMIC_PRAYER_TIME_+24MINUTES</option>
+										<option value="25">MOD_ISLAMIC_PRAYER_TIME_+25MINUTES</option>
+										<option value="26">MOD_ISLAMIC_PRAYER_TIME_+26MINUTES</option>
+										<option value="27">MOD_ISLAMIC_PRAYER_TIME_+27MINUTES</option>
+										<option value="28">MOD_ISLAMIC_PRAYER_TIME_+28MINUTES</option>
+										<option value="29">MOD_ISLAMIC_PRAYER_TIME_+29MINUTES</option>
+										<option value="30">MOD_ISLAMIC_PRAYER_TIME_+30MINUTES</option>
+										<option value="31">MOD_ISLAMIC_PRAYER_TIME_+31MINUTES</option>
+										<option value="32">MOD_ISLAMIC_PRAYER_TIME_+32MINUTES</option>
+										<option value="33">MOD_ISLAMIC_PRAYER_TIME_+33MINUTES</option>
+										<option value="34">MOD_ISLAMIC_PRAYER_TIME_+34MINUTES</option>
+										<option value="35">MOD_ISLAMIC_PRAYER_TIME_+35MINUTES</option>
+										<option value="36">MOD_ISLAMIC_PRAYER_TIME_+36MINUTES</option>
+										<option value="37">MOD_ISLAMIC_PRAYER_TIME_+37MINUTES</option>
+										<option value="38">MOD_ISLAMIC_PRAYER_TIME_+38MINUTES</option>
+										<option value="39">MOD_ISLAMIC_PRAYER_TIME_+39MINUTES</option>
+										<option value="40">MOD_ISLAMIC_PRAYER_TIME_+40MINUTES</option>
+										<option value="41">MOD_ISLAMIC_PRAYER_TIME_+41MINUTES</option>
+										<option value="42">MOD_ISLAMIC_PRAYER_TIME_+42MINUTES</option>
+										<option value="43">MOD_ISLAMIC_PRAYER_TIME_+43MINUTES</option>
+										<option value="44">MOD_ISLAMIC_PRAYER_TIME_+44MINUTES</option>
+										<option value="45">MOD_ISLAMIC_PRAYER_TIME_+45MINUTES</option>
+										<option value="46">MOD_ISLAMIC_PRAYER_TIME_+46MINUTES</option>
+										<option value="47">MOD_ISLAMIC_PRAYER_TIME_+47MINUTES</option>
+										<option value="48">MOD_ISLAMIC_PRAYER_TIME_+48MINUTES</option>
+										<option value="49">MOD_ISLAMIC_PRAYER_TIME_+49MINUTES</option>
+										<option value="50">MOD_ISLAMIC_PRAYER_TIME_+50MINUTES</option>
+										<option value="51">MOD_ISLAMIC_PRAYER_TIME_+51MINUTES</option>
+										<option value="52">MOD_ISLAMIC_PRAYER_TIME_+52MINUTES</option>
+										<option value="53">MOD_ISLAMIC_PRAYER_TIME_+53MINUTES</option>
+										<option value="54">MOD_ISLAMIC_PRAYER_TIME_+54MINUTES</option>
+										<option value="55">MOD_ISLAMIC_PRAYER_TIME_+55MINUTES</option>
+										<option value="56">MOD_ISLAMIC_PRAYER_TIME_+56MINUTES</option>
+										<option value="57">MOD_ISLAMIC_PRAYER_TIME_+57MINUTES</option>
+										<option value="58">MOD_ISLAMIC_PRAYER_TIME_+58MINUTES</option>
+										<option value="59">MOD_ISLAMIC_PRAYER_TIME_+59MINUTES</option>
+										<option value="60">MOD_ISLAMIC_PRAYER_TIME_+60MINUTES</option>
+			</field>
+			<field name="summertime" type="radio"
+					default="0"
+					class="btn-group"
+					description="MOD_ISLAMIC_PRAYER_TIME_SHOW_SUMMER_TIME_DESC"
+					label="MOD_ISLAMIC_PRAYER_TIME_SUMMER_TIME_LBL">
+					<option value="1">MOD_ISLAMIC_PRAYER_TIME_ACTIVATE</option>
+					<option value="0">MOD_ISLAMIC_PRAYER_TIME_DESACTIVATE</option>
+				</field>
+		</fieldset>
+		<fieldset name="ikama" label="MOD_ISLAMIC_PRAYER_TIME_IKAMA_PARAMS">
+			<field name="ikama_on" type="radio"
+					default="0"
+					class="btn-group"
+					description="MOD_ISLAMIC_PRAYER_TIME_IKAMA_ON_DESC"
+					label="MOD_ISLAMIC_PRAYER_TIME_IKAMA_ON_LBL">
+					<option value="1">MOD_ISLAMIC_PRAYER_TIME_ACTIVATE</option>
+					<option value="0">MOD_ISLAMIC_PRAYER_TIME_DESACTIVATE</option>
+				</field>
+				<field name="ikama_clbl" type="text" default="" label="MOD_ISLAMIC_PRAYER_TIME_MODULE_IKAMA_CLBL"
+							 description="MOD_ISLAMIC_PRAYER_TIME_MODULE_IKAMA_CLBL_DSC"  size="20" />
+				<field name="athan_clbl" type="text" default="" label="MOD_ISLAMIC_PRAYER_TIME_MODULE_ATHAN_CLBL"
+							 description="MOD_ISLAMIC_PRAYER_TIME_MODULE_ATHAN_ATHAN_DSC"  size="20" />
+
+			<field name="fajraikama" type="list" default="0" label="MOD_ISLAMIC_PRAYER_TIME_PRAYER_FAJR_ADJUST"
+						 description="MOD_ISLAMIC_PRAYER_TIME_PRAYER_FAJR_ADJUST_DSC">
+										<option value="0">MOD_ISLAMIC_PRAYER_TIME_0MINUTES</option>
+										<option value="1">MOD_ISLAMIC_PRAYER_TIME_+1MINUTES</option>
+										<option value="2">MOD_ISLAMIC_PRAYER_TIME_+2MINUTES</option>
+										<option value="3">MOD_ISLAMIC_PRAYER_TIME_+3MINUTES</option>
+										<option value="4">MOD_ISLAMIC_PRAYER_TIME_+4MINUTES</option>
+										<option value="5">MOD_ISLAMIC_PRAYER_TIME_+5MINUTES</option>
+										<option value="6">MOD_ISLAMIC_PRAYER_TIME_+6MINUTES</option>
+										<option value="7">MOD_ISLAMIC_PRAYER_TIME_+7MINUTES</option>
+										<option value="8">MOD_ISLAMIC_PRAYER_TIME_+8MINUTES</option>
+										<option value="9">MOD_ISLAMIC_PRAYER_TIME_+9MINUTES</option>
+										<option value="10">MOD_ISLAMIC_PRAYER_TIME_+10MINUTES</option>
+										<option value="11">MOD_ISLAMIC_PRAYER_TIME_+11MINUTES</option>
+										<option value="12">MOD_ISLAMIC_PRAYER_TIME_+12MINUTES</option>
+										<option value="13">MOD_ISLAMIC_PRAYER_TIME_+13MINUTES</option>
+										<option value="14">MOD_ISLAMIC_PRAYER_TIME_+14MINUTES</option>
+										<option value="15">MOD_ISLAMIC_PRAYER_TIME_+15MINUTES</option>
+										<option value="16">MOD_ISLAMIC_PRAYER_TIME_+16MINUTES</option>
+										<option value="17">MOD_ISLAMIC_PRAYER_TIME_+17MINUTES</option>
+										<option value="18">MOD_ISLAMIC_PRAYER_TIME_+18MINUTES</option>
+										<option value="19">MOD_ISLAMIC_PRAYER_TIME_+19MINUTES</option>
+										<option value="20">MOD_ISLAMIC_PRAYER_TIME_+20MINUTES</option>
+										<option value="21">MOD_ISLAMIC_PRAYER_TIME_+21MINUTES</option>
+										<option value="22">MOD_ISLAMIC_PRAYER_TIME_+22MINUTES</option>
+										<option value="23">MOD_ISLAMIC_PRAYER_TIME_+23MINUTES</option>
+										<option value="24">MOD_ISLAMIC_PRAYER_TIME_+24MINUTES</option>
+										<option value="25">MOD_ISLAMIC_PRAYER_TIME_+25MINUTES</option>
+										<option value="26">MOD_ISLAMIC_PRAYER_TIME_+26MINUTES</option>
+										<option value="27">MOD_ISLAMIC_PRAYER_TIME_+27MINUTES</option>
+										<option value="28">MOD_ISLAMIC_PRAYER_TIME_+28MINUTES</option>
+										<option value="29">MOD_ISLAMIC_PRAYER_TIME_+29MINUTES</option>
+										<option value="30">MOD_ISLAMIC_PRAYER_TIME_+30MINUTES</option>
+										<option value="31">MOD_ISLAMIC_PRAYER_TIME_+31MINUTES</option>
+										<option value="32">MOD_ISLAMIC_PRAYER_TIME_+32MINUTES</option>
+										<option value="33">MOD_ISLAMIC_PRAYER_TIME_+33MINUTES</option>
+										<option value="34">MOD_ISLAMIC_PRAYER_TIME_+34MINUTES</option>
+										<option value="35">MOD_ISLAMIC_PRAYER_TIME_+35MINUTES</option>
+										<option value="36">MOD_ISLAMIC_PRAYER_TIME_+36MINUTES</option>
+										<option value="37">MOD_ISLAMIC_PRAYER_TIME_+37MINUTES</option>
+										<option value="38">MOD_ISLAMIC_PRAYER_TIME_+38MINUTES</option>
+										<option value="39">MOD_ISLAMIC_PRAYER_TIME_+39MINUTES</option>
+										<option value="40">MOD_ISLAMIC_PRAYER_TIME_+40MINUTES</option>
+										<option value="41">MOD_ISLAMIC_PRAYER_TIME_+41MINUTES</option>
+										<option value="42">MOD_ISLAMIC_PRAYER_TIME_+42MINUTES</option>
+										<option value="43">MOD_ISLAMIC_PRAYER_TIME_+43MINUTES</option>
+										<option value="44">MOD_ISLAMIC_PRAYER_TIME_+44MINUTES</option>
+										<option value="45">MOD_ISLAMIC_PRAYER_TIME_+45MINUTES</option>
+										<option value="46">MOD_ISLAMIC_PRAYER_TIME_+46MINUTES</option>
+										<option value="47">MOD_ISLAMIC_PRAYER_TIME_+47MINUTES</option>
+										<option value="48">MOD_ISLAMIC_PRAYER_TIME_+48MINUTES</option>
+										<option value="49">MOD_ISLAMIC_PRAYER_TIME_+49MINUTES</option>
+										<option value="50">MOD_ISLAMIC_PRAYER_TIME_+50MINUTES</option>
+										<option value="51">MOD_ISLAMIC_PRAYER_TIME_+51MINUTES</option>
+										<option value="52">MOD_ISLAMIC_PRAYER_TIME_+52MINUTES</option>
+										<option value="53">MOD_ISLAMIC_PRAYER_TIME_+53MINUTES</option>
+										<option value="54">MOD_ISLAMIC_PRAYER_TIME_+54MINUTES</option>
+										<option value="55">MOD_ISLAMIC_PRAYER_TIME_+55MINUTES</option>
+										<option value="56">MOD_ISLAMIC_PRAYER_TIME_+56MINUTES</option>
+										<option value="57">MOD_ISLAMIC_PRAYER_TIME_+57MINUTES</option>
+										<option value="58">MOD_ISLAMIC_PRAYER_TIME_+58MINUTES</option>
+										<option value="59">MOD_ISLAMIC_PRAYER_TIME_+59MINUTES</option>
+										<option value="60">MOD_ISLAMIC_PRAYER_TIME_+60MINUTES</option>
+			</field>
+			<field name="duhrikama" type="list" default="0" label="MOD_ISLAMIC_PRAYER_TIME_PRAYER_DHUR_ADJUST"
+						 description="MOD_ISLAMIC_PRAYER_TIME_PRAYER_DHUR_ADJUST_DSC">
+										<option value="0">MOD_ISLAMIC_PRAYER_TIME_0MINUTES</option>
+										<option value="1">MOD_ISLAMIC_PRAYER_TIME_+1MINUTES</option>
+										<option value="2">MOD_ISLAMIC_PRAYER_TIME_+2MINUTES</option>
+										<option value="3">MOD_ISLAMIC_PRAYER_TIME_+3MINUTES</option>
+										<option value="4">MOD_ISLAMIC_PRAYER_TIME_+4MINUTES</option>
+										<option value="5">MOD_ISLAMIC_PRAYER_TIME_+5MINUTES</option>
+										<option value="6">MOD_ISLAMIC_PRAYER_TIME_+6MINUTES</option>
+										<option value="7">MOD_ISLAMIC_PRAYER_TIME_+7MINUTES</option>
+										<option value="8">MOD_ISLAMIC_PRAYER_TIME_+8MINUTES</option>
+										<option value="9">MOD_ISLAMIC_PRAYER_TIME_+9MINUTES</option>
+										<option value="10">MOD_ISLAMIC_PRAYER_TIME_+10MINUTES</option>
+										<option value="11">MOD_ISLAMIC_PRAYER_TIME_+11MINUTES</option>
+										<option value="12">MOD_ISLAMIC_PRAYER_TIME_+12MINUTES</option>
+										<option value="13">MOD_ISLAMIC_PRAYER_TIME_+13MINUTES</option>
+										<option value="14">MOD_ISLAMIC_PRAYER_TIME_+14MINUTES</option>
+										<option value="15">MOD_ISLAMIC_PRAYER_TIME_+15MINUTES</option>
+										<option value="16">MOD_ISLAMIC_PRAYER_TIME_+16MINUTES</option>
+										<option value="17">MOD_ISLAMIC_PRAYER_TIME_+17MINUTES</option>
+										<option value="18">MOD_ISLAMIC_PRAYER_TIME_+18MINUTES</option>
+										<option value="19">MOD_ISLAMIC_PRAYER_TIME_+19MINUTES</option>
+										<option value="20">MOD_ISLAMIC_PRAYER_TIME_+20MINUTES</option>
+										<option value="21">MOD_ISLAMIC_PRAYER_TIME_+21MINUTES</option>
+										<option value="22">MOD_ISLAMIC_PRAYER_TIME_+22MINUTES</option>
+										<option value="23">MOD_ISLAMIC_PRAYER_TIME_+23MINUTES</option>
+										<option value="24">MOD_ISLAMIC_PRAYER_TIME_+24MINUTES</option>
+										<option value="25">MOD_ISLAMIC_PRAYER_TIME_+25MINUTES</option>
+										<option value="26">MOD_ISLAMIC_PRAYER_TIME_+26MINUTES</option>
+										<option value="27">MOD_ISLAMIC_PRAYER_TIME_+27MINUTES</option>
+										<option value="28">MOD_ISLAMIC_PRAYER_TIME_+28MINUTES</option>
+										<option value="29">MOD_ISLAMIC_PRAYER_TIME_+29MINUTES</option>
+										<option value="30">MOD_ISLAMIC_PRAYER_TIME_+30MINUTES</option>
+										<option value="31">MOD_ISLAMIC_PRAYER_TIME_+31MINUTES</option>
+										<option value="32">MOD_ISLAMIC_PRAYER_TIME_+32MINUTES</option>
+										<option value="33">MOD_ISLAMIC_PRAYER_TIME_+33MINUTES</option>
+										<option value="34">MOD_ISLAMIC_PRAYER_TIME_+34MINUTES</option>
+										<option value="35">MOD_ISLAMIC_PRAYER_TIME_+35MINUTES</option>
+										<option value="36">MOD_ISLAMIC_PRAYER_TIME_+36MINUTES</option>
+										<option value="37">MOD_ISLAMIC_PRAYER_TIME_+37MINUTES</option>
+										<option value="38">MOD_ISLAMIC_PRAYER_TIME_+38MINUTES</option>
+										<option value="39">MOD_ISLAMIC_PRAYER_TIME_+39MINUTES</option>
+										<option value="40">MOD_ISLAMIC_PRAYER_TIME_+40MINUTES</option>
+										<option value="41">MOD_ISLAMIC_PRAYER_TIME_+41MINUTES</option>
+										<option value="42">MOD_ISLAMIC_PRAYER_TIME_+42MINUTES</option>
+										<option value="43">MOD_ISLAMIC_PRAYER_TIME_+43MINUTES</option>
+										<option value="44">MOD_ISLAMIC_PRAYER_TIME_+44MINUTES</option>
+										<option value="45">MOD_ISLAMIC_PRAYER_TIME_+45MINUTES</option>
+										<option value="46">MOD_ISLAMIC_PRAYER_TIME_+46MINUTES</option>
+										<option value="47">MOD_ISLAMIC_PRAYER_TIME_+47MINUTES</option>
+										<option value="48">MOD_ISLAMIC_PRAYER_TIME_+48MINUTES</option>
+										<option value="49">MOD_ISLAMIC_PRAYER_TIME_+49MINUTES</option>
+										<option value="50">MOD_ISLAMIC_PRAYER_TIME_+50MINUTES</option>
+										<option value="51">MOD_ISLAMIC_PRAYER_TIME_+51MINUTES</option>
+										<option value="52">MOD_ISLAMIC_PRAYER_TIME_+52MINUTES</option>
+										<option value="53">MOD_ISLAMIC_PRAYER_TIME_+53MINUTES</option>
+										<option value="54">MOD_ISLAMIC_PRAYER_TIME_+54MINUTES</option>
+										<option value="55">MOD_ISLAMIC_PRAYER_TIME_+55MINUTES</option>
+										<option value="56">MOD_ISLAMIC_PRAYER_TIME_+56MINUTES</option>
+										<option value="57">MOD_ISLAMIC_PRAYER_TIME_+57MINUTES</option>
+										<option value="58">MOD_ISLAMIC_PRAYER_TIME_+58MINUTES</option>
+										<option value="59">MOD_ISLAMIC_PRAYER_TIME_+59MINUTES</option>
+										<option value="60">MOD_ISLAMIC_PRAYER_TIME_+60MINUTES</option>
+			</field>
+			<field name="asrikama" type="list" default="0" label="MOD_ISLAMIC_PRAYER_TIME_PRAYER_ASR_ADJUST"
+						 description="MOD_ISLAMIC_PRAYER_TIME_PRAYER_ASR_ADJUST_DSC">
+										<option value="0">MOD_ISLAMIC_PRAYER_TIME_0MINUTES</option>
+										<option value="1">MOD_ISLAMIC_PRAYER_TIME_+1MINUTES</option>
+										<option value="2">MOD_ISLAMIC_PRAYER_TIME_+2MINUTES</option>
+										<option value="3">MOD_ISLAMIC_PRAYER_TIME_+3MINUTES</option>
+										<option value="4">MOD_ISLAMIC_PRAYER_TIME_+4MINUTES</option>
+										<option value="5">MOD_ISLAMIC_PRAYER_TIME_+5MINUTES</option>
+										<option value="6">MOD_ISLAMIC_PRAYER_TIME_+6MINUTES</option>
+										<option value="7">MOD_ISLAMIC_PRAYER_TIME_+7MINUTES</option>
+										<option value="8">MOD_ISLAMIC_PRAYER_TIME_+8MINUTES</option>
+										<option value="9">MOD_ISLAMIC_PRAYER_TIME_+9MINUTES</option>
+										<option value="10">MOD_ISLAMIC_PRAYER_TIME_+10MINUTES</option>
+										<option value="11">MOD_ISLAMIC_PRAYER_TIME_+11MINUTES</option>
+										<option value="12">MOD_ISLAMIC_PRAYER_TIME_+12MINUTES</option>
+										<option value="13">MOD_ISLAMIC_PRAYER_TIME_+13MINUTES</option>
+										<option value="14">MOD_ISLAMIC_PRAYER_TIME_+14MINUTES</option>
+										<option value="15">MOD_ISLAMIC_PRAYER_TIME_+15MINUTES</option>
+										<option value="16">MOD_ISLAMIC_PRAYER_TIME_+16MINUTES</option>
+										<option value="17">MOD_ISLAMIC_PRAYER_TIME_+17MINUTES</option>
+										<option value="18">MOD_ISLAMIC_PRAYER_TIME_+18MINUTES</option>
+										<option value="19">MOD_ISLAMIC_PRAYER_TIME_+19MINUTES</option>
+										<option value="20">MOD_ISLAMIC_PRAYER_TIME_+20MINUTES</option>
+										<option value="21">MOD_ISLAMIC_PRAYER_TIME_+21MINUTES</option>
+										<option value="22">MOD_ISLAMIC_PRAYER_TIME_+22MINUTES</option>
+										<option value="23">MOD_ISLAMIC_PRAYER_TIME_+23MINUTES</option>
+										<option value="24">MOD_ISLAMIC_PRAYER_TIME_+24MINUTES</option>
+										<option value="25">MOD_ISLAMIC_PRAYER_TIME_+25MINUTES</option>
+										<option value="26">MOD_ISLAMIC_PRAYER_TIME_+26MINUTES</option>
+										<option value="27">MOD_ISLAMIC_PRAYER_TIME_+27MINUTES</option>
+										<option value="28">MOD_ISLAMIC_PRAYER_TIME_+28MINUTES</option>
+										<option value="29">MOD_ISLAMIC_PRAYER_TIME_+29MINUTES</option>
+										<option value="30">MOD_ISLAMIC_PRAYER_TIME_+30MINUTES</option>
+										<option value="31">MOD_ISLAMIC_PRAYER_TIME_+31MINUTES</option>
+										<option value="32">MOD_ISLAMIC_PRAYER_TIME_+32MINUTES</option>
+										<option value="33">MOD_ISLAMIC_PRAYER_TIME_+33MINUTES</option>
+										<option value="34">MOD_ISLAMIC_PRAYER_TIME_+34MINUTES</option>
+										<option value="35">MOD_ISLAMIC_PRAYER_TIME_+35MINUTES</option>
+										<option value="36">MOD_ISLAMIC_PRAYER_TIME_+36MINUTES</option>
+										<option value="37">MOD_ISLAMIC_PRAYER_TIME_+37MINUTES</option>
+										<option value="38">MOD_ISLAMIC_PRAYER_TIME_+38MINUTES</option>
+										<option value="39">MOD_ISLAMIC_PRAYER_TIME_+39MINUTES</option>
+										<option value="40">MOD_ISLAMIC_PRAYER_TIME_+40MINUTES</option>
+										<option value="41">MOD_ISLAMIC_PRAYER_TIME_+41MINUTES</option>
+										<option value="42">MOD_ISLAMIC_PRAYER_TIME_+42MINUTES</option>
+										<option value="43">MOD_ISLAMIC_PRAYER_TIME_+43MINUTES</option>
+										<option value="44">MOD_ISLAMIC_PRAYER_TIME_+44MINUTES</option>
+										<option value="45">MOD_ISLAMIC_PRAYER_TIME_+45MINUTES</option>
+										<option value="46">MOD_ISLAMIC_PRAYER_TIME_+46MINUTES</option>
+										<option value="47">MOD_ISLAMIC_PRAYER_TIME_+47MINUTES</option>
+										<option value="48">MOD_ISLAMIC_PRAYER_TIME_+48MINUTES</option>
+										<option value="49">MOD_ISLAMIC_PRAYER_TIME_+49MINUTES</option>
+										<option value="50">MOD_ISLAMIC_PRAYER_TIME_+50MINUTES</option>
+										<option value="51">MOD_ISLAMIC_PRAYER_TIME_+51MINUTES</option>
+										<option value="52">MOD_ISLAMIC_PRAYER_TIME_+52MINUTES</option>
+										<option value="53">MOD_ISLAMIC_PRAYER_TIME_+53MINUTES</option>
+										<option value="54">MOD_ISLAMIC_PRAYER_TIME_+54MINUTES</option>
+										<option value="55">MOD_ISLAMIC_PRAYER_TIME_+55MINUTES</option>
+										<option value="56">MOD_ISLAMIC_PRAYER_TIME_+56MINUTES</option>
+										<option value="57">MOD_ISLAMIC_PRAYER_TIME_+57MINUTES</option>
+										<option value="58">MOD_ISLAMIC_PRAYER_TIME_+58MINUTES</option>
+										<option value="59">MOD_ISLAMIC_PRAYER_TIME_+59MINUTES</option>
+										<option value="60">MOD_ISLAMIC_PRAYER_TIME_+60MINUTES</option>
+			</field>
+			<field name="maghribikama" type="list" default="0" label="MOD_ISLAMIC_PRAYER_TIME_PRAYER_MAGHRIB_ADJUST"
+						 description="MOD_ISLAMIC_PRAYER_TIME_PRAYER_MAGHRIB_ADJUST_DSC">
+										<option value="0">MOD_ISLAMIC_PRAYER_TIME_0MINUTES</option>
+										<option value="1">MOD_ISLAMIC_PRAYER_TIME_+1MINUTES</option>
+										<option value="2">MOD_ISLAMIC_PRAYER_TIME_+2MINUTES</option>
+										<option value="3">MOD_ISLAMIC_PRAYER_TIME_+3MINUTES</option>
+										<option value="4">MOD_ISLAMIC_PRAYER_TIME_+4MINUTES</option>
+										<option value="5">MOD_ISLAMIC_PRAYER_TIME_+5MINUTES</option>
+										<option value="6">MOD_ISLAMIC_PRAYER_TIME_+6MINUTES</option>
+										<option value="7">MOD_ISLAMIC_PRAYER_TIME_+7MINUTES</option>
+										<option value="8">MOD_ISLAMIC_PRAYER_TIME_+8MINUTES</option>
+										<option value="9">MOD_ISLAMIC_PRAYER_TIME_+9MINUTES</option>
+										<option value="10">MOD_ISLAMIC_PRAYER_TIME_+10MINUTES</option>
+										<option value="11">MOD_ISLAMIC_PRAYER_TIME_+11MINUTES</option>
+										<option value="12">MOD_ISLAMIC_PRAYER_TIME_+12MINUTES</option>
+										<option value="13">MOD_ISLAMIC_PRAYER_TIME_+13MINUTES</option>
+										<option value="14">MOD_ISLAMIC_PRAYER_TIME_+14MINUTES</option>
+										<option value="15">MOD_ISLAMIC_PRAYER_TIME_+15MINUTES</option>
+										<option value="16">MOD_ISLAMIC_PRAYER_TIME_+16MINUTES</option>
+										<option value="17">MOD_ISLAMIC_PRAYER_TIME_+17MINUTES</option>
+										<option value="18">MOD_ISLAMIC_PRAYER_TIME_+18MINUTES</option>
+										<option value="19">MOD_ISLAMIC_PRAYER_TIME_+19MINUTES</option>
+										<option value="20">MOD_ISLAMIC_PRAYER_TIME_+20MINUTES</option>
+										<option value="21">MOD_ISLAMIC_PRAYER_TIME_+21MINUTES</option>
+										<option value="22">MOD_ISLAMIC_PRAYER_TIME_+22MINUTES</option>
+										<option value="23">MOD_ISLAMIC_PRAYER_TIME_+23MINUTES</option>
+										<option value="24">MOD_ISLAMIC_PRAYER_TIME_+24MINUTES</option>
+										<option value="25">MOD_ISLAMIC_PRAYER_TIME_+25MINUTES</option>
+										<option value="26">MOD_ISLAMIC_PRAYER_TIME_+26MINUTES</option>
+										<option value="27">MOD_ISLAMIC_PRAYER_TIME_+27MINUTES</option>
+										<option value="28">MOD_ISLAMIC_PRAYER_TIME_+28MINUTES</option>
+										<option value="29">MOD_ISLAMIC_PRAYER_TIME_+29MINUTES</option>
+										<option value="30">MOD_ISLAMIC_PRAYER_TIME_+30MINUTES</option>
+										<option value="31">MOD_ISLAMIC_PRAYER_TIME_+31MINUTES</option>
+										<option value="32">MOD_ISLAMIC_PRAYER_TIME_+32MINUTES</option>
+										<option value="33">MOD_ISLAMIC_PRAYER_TIME_+33MINUTES</option>
+										<option value="34">MOD_ISLAMIC_PRAYER_TIME_+34MINUTES</option>
+										<option value="35">MOD_ISLAMIC_PRAYER_TIME_+35MINUTES</option>
+										<option value="36">MOD_ISLAMIC_PRAYER_TIME_+36MINUTES</option>
+										<option value="37">MOD_ISLAMIC_PRAYER_TIME_+37MINUTES</option>
+										<option value="38">MOD_ISLAMIC_PRAYER_TIME_+38MINUTES</option>
+										<option value="39">MOD_ISLAMIC_PRAYER_TIME_+39MINUTES</option>
+										<option value="40">MOD_ISLAMIC_PRAYER_TIME_+40MINUTES</option>
+										<option value="41">MOD_ISLAMIC_PRAYER_TIME_+41MINUTES</option>
+										<option value="42">MOD_ISLAMIC_PRAYER_TIME_+42MINUTES</option>
+										<option value="43">MOD_ISLAMIC_PRAYER_TIME_+43MINUTES</option>
+										<option value="44">MOD_ISLAMIC_PRAYER_TIME_+44MINUTES</option>
+										<option value="45">MOD_ISLAMIC_PRAYER_TIME_+45MINUTES</option>
+										<option value="46">MOD_ISLAMIC_PRAYER_TIME_+46MINUTES</option>
+										<option value="47">MOD_ISLAMIC_PRAYER_TIME_+47MINUTES</option>
+										<option value="48">MOD_ISLAMIC_PRAYER_TIME_+48MINUTES</option>
+										<option value="49">MOD_ISLAMIC_PRAYER_TIME_+49MINUTES</option>
+										<option value="50">MOD_ISLAMIC_PRAYER_TIME_+50MINUTES</option>
+										<option value="51">MOD_ISLAMIC_PRAYER_TIME_+51MINUTES</option>
+										<option value="52">MOD_ISLAMIC_PRAYER_TIME_+52MINUTES</option>
+										<option value="53">MOD_ISLAMIC_PRAYER_TIME_+53MINUTES</option>
+										<option value="54">MOD_ISLAMIC_PRAYER_TIME_+54MINUTES</option>
+										<option value="55">MOD_ISLAMIC_PRAYER_TIME_+55MINUTES</option>
+										<option value="56">MOD_ISLAMIC_PRAYER_TIME_+56MINUTES</option>
+										<option value="57">MOD_ISLAMIC_PRAYER_TIME_+57MINUTES</option>
+										<option value="58">MOD_ISLAMIC_PRAYER_TIME_+58MINUTES</option>
+										<option value="59">MOD_ISLAMIC_PRAYER_TIME_+59MINUTES</option>
+										<option value="60">MOD_ISLAMIC_PRAYER_TIME_+60MINUTES</option>
+			</field>
+			<field name="ishaikama" type="list" default="0" label="MOD_ISLAMIC_PRAYER_TIME_PRAYER_ISHAA_ADJUST"
+						 description="MOD_ISLAMIC_PRAYER_TIME_PRAYER_ISHAA_ADJUST_DSC">
+										<option value="0">MOD_ISLAMIC_PRAYER_TIME_0MINUTES</option>
+										<option value="1">MOD_ISLAMIC_PRAYER_TIME_+1MINUTES</option>
+										<option value="2">MOD_ISLAMIC_PRAYER_TIME_+2MINUTES</option>
+										<option value="3">MOD_ISLAMIC_PRAYER_TIME_+3MINUTES</option>
+										<option value="4">MOD_ISLAMIC_PRAYER_TIME_+4MINUTES</option>
+										<option value="5">MOD_ISLAMIC_PRAYER_TIME_+5MINUTES</option>
+										<option value="6">MOD_ISLAMIC_PRAYER_TIME_+6MINUTES</option>
+										<option value="7">MOD_ISLAMIC_PRAYER_TIME_+7MINUTES</option>
+										<option value="8">MOD_ISLAMIC_PRAYER_TIME_+8MINUTES</option>
+										<option value="9">MOD_ISLAMIC_PRAYER_TIME_+9MINUTES</option>
+										<option value="10">MOD_ISLAMIC_PRAYER_TIME_+10MINUTES</option>
+										<option value="11">MOD_ISLAMIC_PRAYER_TIME_+11MINUTES</option>
+										<option value="12">MOD_ISLAMIC_PRAYER_TIME_+12MINUTES</option>
+										<option value="13">MOD_ISLAMIC_PRAYER_TIME_+13MINUTES</option>
+										<option value="14">MOD_ISLAMIC_PRAYER_TIME_+14MINUTES</option>
+										<option value="15">MOD_ISLAMIC_PRAYER_TIME_+15MINUTES</option>
+										<option value="16">MOD_ISLAMIC_PRAYER_TIME_+16MINUTES</option>
+										<option value="17">MOD_ISLAMIC_PRAYER_TIME_+17MINUTES</option>
+										<option value="18">MOD_ISLAMIC_PRAYER_TIME_+18MINUTES</option>
+										<option value="19">MOD_ISLAMIC_PRAYER_TIME_+19MINUTES</option>
+										<option value="20">MOD_ISLAMIC_PRAYER_TIME_+20MINUTES</option>
+										<option value="21">MOD_ISLAMIC_PRAYER_TIME_+21MINUTES</option>
+										<option value="22">MOD_ISLAMIC_PRAYER_TIME_+22MINUTES</option>
+										<option value="23">MOD_ISLAMIC_PRAYER_TIME_+23MINUTES</option>
+										<option value="24">MOD_ISLAMIC_PRAYER_TIME_+24MINUTES</option>
+										<option value="25">MOD_ISLAMIC_PRAYER_TIME_+25MINUTES</option>
+										<option value="26">MOD_ISLAMIC_PRAYER_TIME_+26MINUTES</option>
+										<option value="27">MOD_ISLAMIC_PRAYER_TIME_+27MINUTES</option>
+										<option value="28">MOD_ISLAMIC_PRAYER_TIME_+28MINUTES</option>
+										<option value="29">MOD_ISLAMIC_PRAYER_TIME_+29MINUTES</option>
+										<option value="30">MOD_ISLAMIC_PRAYER_TIME_+30MINUTES</option>
+										<option value="31">MOD_ISLAMIC_PRAYER_TIME_+31MINUTES</option>
+										<option value="32">MOD_ISLAMIC_PRAYER_TIME_+32MINUTES</option>
+										<option value="33">MOD_ISLAMIC_PRAYER_TIME_+33MINUTES</option>
+										<option value="34">MOD_ISLAMIC_PRAYER_TIME_+34MINUTES</option>
+										<option value="35">MOD_ISLAMIC_PRAYER_TIME_+35MINUTES</option>
+										<option value="36">MOD_ISLAMIC_PRAYER_TIME_+36MINUTES</option>
+										<option value="37">MOD_ISLAMIC_PRAYER_TIME_+37MINUTES</option>
+										<option value="38">MOD_ISLAMIC_PRAYER_TIME_+38MINUTES</option>
+										<option value="39">MOD_ISLAMIC_PRAYER_TIME_+39MINUTES</option>
+										<option value="40">MOD_ISLAMIC_PRAYER_TIME_+40MINUTES</option>
+										<option value="41">MOD_ISLAMIC_PRAYER_TIME_+41MINUTES</option>
+										<option value="42">MOD_ISLAMIC_PRAYER_TIME_+42MINUTES</option>
+										<option value="43">MOD_ISLAMIC_PRAYER_TIME_+43MINUTES</option>
+										<option value="44">MOD_ISLAMIC_PRAYER_TIME_+44MINUTES</option>
+										<option value="45">MOD_ISLAMIC_PRAYER_TIME_+45MINUTES</option>
+										<option value="46">MOD_ISLAMIC_PRAYER_TIME_+46MINUTES</option>
+										<option value="47">MOD_ISLAMIC_PRAYER_TIME_+47MINUTES</option>
+										<option value="48">MOD_ISLAMIC_PRAYER_TIME_+48MINUTES</option>
+										<option value="49">MOD_ISLAMIC_PRAYER_TIME_+49MINUTES</option>
+										<option value="50">MOD_ISLAMIC_PRAYER_TIME_+50MINUTES</option>
+										<option value="51">MOD_ISLAMIC_PRAYER_TIME_+51MINUTES</option>
+										<option value="52">MOD_ISLAMIC_PRAYER_TIME_+52MINUTES</option>
+										<option value="53">MOD_ISLAMIC_PRAYER_TIME_+53MINUTES</option>
+										<option value="54">MOD_ISLAMIC_PRAYER_TIME_+54MINUTES</option>
+										<option value="55">MOD_ISLAMIC_PRAYER_TIME_+55MINUTES</option>
+										<option value="56">MOD_ISLAMIC_PRAYER_TIME_+56MINUTES</option>
+										<option value="57">MOD_ISLAMIC_PRAYER_TIME_+57MINUTES</option>
+										<option value="58">MOD_ISLAMIC_PRAYER_TIME_+58MINUTES</option>
+										<option value="59">MOD_ISLAMIC_PRAYER_TIME_+59MINUTES</option>
+										<option value="60">MOD_ISLAMIC_PRAYER_TIME_+60MINUTES</option>
+			</field>
+		</fieldset>
+
+
+			<fieldset name="Basic" label="MODULE_OPTION">
+				<field name="module_width" type="text" default="" label="MOD_ISLAMIC_PRAYER_TIME_MODULE_WIDTH"
+							 description="MOD_ISLAMIC_PRAYER_TIME_MODULE_WIDTH_DSC"
+							 class= "validate-numeric"  size="20" />
+				<field name="module_height" type="text" default="" label="MOD_ISLAMIC_PRAYER_MODULE_HEIGHT"
+							 description="MOD_ISLAMIC_PRAYER_MODULE_HEIGHT_DSC"
+							 class= "validate-numeric" size="20" />
+				<field name="fajr_clbl" type="text" default="" label="MOD_ISLAMIC_PRAYER_TIME_MODULE_FAJR_CLBL"
+							 description="MOD_ISLAMIC_PRAYER_TIME_MODULE_FAJR_CLBL_DSC"  size="20" />
+				<field name="chourouk_clbl" type="text" default="" label="MOD_ISLAMIC_PRAYER_TIME_MODULE_CHOUROUK_CLBL"
+							 description="MOD_ISLAMIC_PRAYER_TIME_MODULE_CHOUROUK_CLBL_DSC"  size="20" />
+				<field name="duhr_clbl" type="text" default="" label="MOD_ISLAMIC_PRAYER_TIME_MODULE_DUHR_CLBL"
+							 description="MOD_ISLAMIC_PRAYER_TIME_MODULE_DUHR_CLBL_DSC"  size="20" />
+				<field name="asr_clbl" type="text" default="" label="MOD_ISLAMIC_PRAYER_TIME_MODULE_ASR_CLBL"
+							 description="MOD_ISLAMIC_PRAYER_TIME_MODULE_ASR_CLBL_DSC"  size="20" />
+				<field name="maghrib_clbl" type="text" default="" label="MOD_ISLAMIC_PRAYER_TIME_MODULE_MAGHRIB_CLBL"
+							 description="MOD_ISLAMIC_PRAYER_TIME_MODULE_MAGHRIB_CLBL_DSC"  size="20" />
+				<field name="ishaa_clbl" type="text" default="" label="MOD_ISLAMIC_PRAYER_TIME_MODULE_ISHAA_CLBL"
+							 description="MOD_ISLAMIC_PRAYER_TIME_MODULE_ISHAA_CLBL"  size="20" />
+				<field name="showCalculMethod" type="radio"
+					default="1"
+					class="btn-group"
+					description="MOD_ISLAMIC_PRAYER_TIME_SHOW_CALCUL_METHOD_DESC"
+					label="MOD_ISLAMIC_PRAYER_TIME_SHOW_CALCUL_METHOD_AUTHOR_LBL">
+					<option value="1">MOD_ISLAMIC_PRAYER_TIME_SHOW</option>
+					<option value="0">MOD_ISLAMIC_PRAYER_TIME_HIDE</option>
+				</field>
+				<field name="showAsrJuristic" type="radio"
+					default="1"
+					class="btn-group"
+					description="MOD_ISLAMIC_PRAYER_TIME_SHOW_ASR_DESC"
+					label="MOD_ISLAMIC_PRAYER_TIME_SHOW_ASR_LBL">
+					<option value="1">MOD_ISLAMIC_PRAYER_TIME_SHOW</option>
+					<option value="0">MOD_ISLAMIC_PRAYER_TIME_HIDE</option>
+				</field>
+				<field name="showAuthorLink" type="radio"
+					default="1"
+					class="btn-group"
+					description="MOD_ISLAMIC_PRAYER_TIME_SHOW_AUTHOR_DESC"
+					label="MOD_ISLAMIC_PRAYER_TIME_SHOW_AUTHOR_LBL">
+					<option value="1">MOD_ISLAMIC_PRAYER_TIME_SHOW</option>
+					<option value="0">MOD_ISLAMIC_PRAYER_TIME_HIDE</option>
+				</field>
+			</fieldset>
+		</fields>
+		</config>
+</extension>
